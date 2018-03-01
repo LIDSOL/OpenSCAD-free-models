@@ -18,18 +18,23 @@ translate([0,0,-medidaX/2])
 linear_extrude(height=medidaX)
 perfil1();
 
+
+
 //vertical sencillo
 color("gray")
 translate([0,0,-medidaZ-(medidaPerfil/2)])
 linear_extrude(height=medidaZ)
 perfil1();
 
-
+/*
 //esquineros vertical
 color("red")
 translate([medidaPerfil,0,-medidaPerfil])
 rotate([90,90,0])
 esquinero();
+
+
+
 
 color("red")
 mirror([1,0,0]){
@@ -40,12 +45,18 @@ esquinero();
 //fin esquineros vertical
 
 
+*/
+
+
+
+
 //PERFIL DOBLE TRANSVERSAL
 color("gray")
 translate([-medidaX/2-(medidaPerfil),-(medidaY/2)-(medidaPerfil/2),+(3*medidaPerfil)+10])
 rotate([0,90,0])
 linear_extrude(height=medidaX+(medidaPerfil*2))
 perfil2();
+
 
 
 //CORREDERA VERTICAL

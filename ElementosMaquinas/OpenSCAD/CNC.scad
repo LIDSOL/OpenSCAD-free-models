@@ -26,7 +26,7 @@ translate([0,0,-medidaZ-(medidaPerfil/2)])
 linear_extrude(height=medidaZ)
 perfil1();
 
-/*
+
 //esquineros vertical
 color("red")
 translate([medidaPerfil,0,-medidaPerfil])
@@ -45,7 +45,7 @@ esquinero();
 //fin esquineros vertical
 
 
-*/
+
 
 
 
@@ -76,6 +76,8 @@ translate([medidaX/2+(medidaPerfil/2),-(medidaY/2)-(medidaPerfil/2),-(medidaPerf
 rotate([90,90,90])
 correderaDobleCompleta();
 
+
+
 //esquinero lateral
 color("red")
 translate([medidaX/2-(medidaPerfil/2),-medidaPerfil,0])
@@ -93,13 +95,14 @@ perfil2();
 
  //PERFIL DOBLE LATERAL ESPEJO X
 mirror([1,0,0]){
-    
+  
 //correderaDoble
 color("red")
 translate([medidaX/2+(medidaPerfil/2),-(medidaY/2)-(medidaPerfil/2),-(medidaPerfil/2)])
 rotate([90,90,90])
 correderaDobleCompleta();
 
+    
 //esquinero lateral
 color("red")
 translate([medidaX/2-(medidaPerfil/2),-medidaPerfil,0])
@@ -114,12 +117,12 @@ rotate([90,90,0])
 linear_extrude(height=medidaY)
 perfil2();
 }
-
+/*
 //estructura de acrilico
 color("black")
 translate([0,+6,0])
 case();
-
+*/
 //corredera transversal
 color("red")
 translate([0,-(medidaY/2)-(medidaPerfil/2),+(3*medidaPerfil)+10])

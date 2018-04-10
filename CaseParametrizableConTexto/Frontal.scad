@@ -1,8 +1,8 @@
 
-use<Letras.scad>;
+
 
 espesor=2;
-toleranciaAdentro=1;
+toleranciaAdentro=2;
 toleranciaComp=1.5;
 
 
@@ -67,6 +67,22 @@ cube([InlonX,InlonY,InlonZ*2]);
 */
 
 
+module Letras(escala=1,altura=1){
+
+union(){
+ linear_extrude(height=altura*2)
+ text(size=20*escala,font = "Simplex","Texto");
+
+ linear_extrude(height=altura*2)
+ translate([0,-35*escala,0])
+ text(size=12*escala,font = "Simplex","LOGO");
+ }//fin union letras
+ 
+}
+
+//Letras();
+
+
 module taladroMalla(divisiones=3){
 union(){
 
@@ -119,12 +135,14 @@ rotate([0,180,0])
 placa();
     */
 
-translate([-37,-7,1])
-rotate([0,180,180])
+//translate([-37,-7,1])
+//rotate([0,180,180])
 
-Letras(escala=0.6,altura=1);
+//Letras(escala=0.6,altura=1);
 
 }
+
+
 
 /*
 //PLACA
@@ -134,17 +152,37 @@ rotate([0,180,0])
 placa();
 */
 
-module poste(){
+module poste(diametro=5,tornillo=2.5){
 difference(){
 resta=0;
-cylinder(r=5/2,$fn=100,h=InlonZ+espesor-resta);
-cylinder(r=2.5/2,$fn=100,h=InlonZ+6-resta);
+cylinder(d=diametro,$fn=100,h=InlonZ+espesor-resta);
+cylinder(d=tornillo,$fn=100,h=InlonZ+6-resta);
 }
 
 
 }
 
-resta=0;
+
+diametro=5;
+tornillo=2.5;
+
+//Funciones
+
+//dimensiones de taladro de reja
+dimTalCubX=(InlonX-(vastagos*espesor))/(divisiones+1);
+dimTalCubY=(InlonY-(vastagos*espesor))/(divisiones+1);
+
+transX=dimTalCubX+espesor; 
+transY=dimTalCubY+espesor; 
+
+Q
+
+translate([(lonX/2)-(diametro/2)+(tornillo/2),0,0])
+poste();
+
+rotate([0,180,0])
+Letras(escala=0.6,altura=1);
+
 
 /*
 //refuerzo extra

@@ -16,7 +16,7 @@ parte ->3 compartimiento tapa
 parte -> 4 Tapa
 parte -> 5 tapa pila
 */
-parte=5;
+parte=0;
 
 
 module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=20,radioRosca=0.6,vueltas=4){
@@ -97,7 +97,7 @@ radioRosca=0.6;
     
     union(){ 
     difference(){
-        cylinder(d=Diametro,$fnresoluciOn,h=altura,center=true);
+        cylinder(d=Diametro,$fn=resoluciOn,h=altura,center=true);
         cylinder(d=Diametro-2*espesor,$fn=resoluciOn,h=2*altura,center=true);
     }
     
@@ -123,7 +123,7 @@ circle(r = radioRosca);
 }//fin de la union
 
 //cubo parametrizable
-translate([0,40,0])
+translate([0,40,-20])
        cube([20,80,5],center=true);
 
         }//fin difference

@@ -86,14 +86,16 @@ if(parte==0){
     Diametro=90;
 espesor=4;
 
-resoluciOn=100;
+resoluciOn=50;
 radioRosca=0.6;
     
     alturasRosca=20;
     altura=40;
     redondeadorMinkowski=10;
     
- difference(){ 
+ difference(){
+    
+    union(){ 
     difference(){
         cylinder(d=Diametro,$fnresoluciOn,h=altura,center=true);
         cylinder(d=Diametro-2*espesor,$fn=resoluciOn,h=2*altura,center=true);
@@ -118,8 +120,9 @@ translate([0,0,(altura/2)-alturasRosca])
 linear_extrude(height = alturasRosca, center = false, convexity = 10, twist = 360*12, $fn = resoluciOn)
 translate([Diametro/2-espesor-radioRosca, 0, 0])
 circle(r = radioRosca);
+}//fin de la union
 
-
+       cube([20,20,400],center=true);
 
         }
 }

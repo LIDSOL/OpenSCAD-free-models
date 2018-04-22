@@ -128,9 +128,12 @@ parte -> 4 Tapa
 parte -> 5 tapa pila
 */
 
+//PARTE 0BIEN
 //PARTE 1BIEN
+//PARTE 2BIEN
 //PARTE 3BIEN
-parte=4;
+//PARTE 4BIEN
+parte=5;
 
 
 module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=20,radioRosca=0.6,vueltas=4){
@@ -160,22 +163,12 @@ cylinder(d=Diametro,$fn=resoluciOn,h=espesor);
     //Helice abajo
   
   translate([0,0,-altura/2-10])
-  //showexample = 3;   
-  //Threading(pitch = 2, d=Diametro-(2*espesor), windings = 10, angle = 20, full = true);   
-    /*
-translate([0,0,-(altura/2)-alturasRosca])
-linear_extrude(height = alturasRosca, center = false, convexity = 10, twist = 360*vueltas, $fn = resoluciOn)
-translate([Diametro/2-espesor-radioRosca, 0, 0])
-circle(r = radioRosca);
-*/
+
     threading(pitch = 2, d=Diametro-(2*espesor), windings = 5, angle = 20); 
 
 //Helice arriba
 translate([0,0,altura/2-10])
-    /*
-linear_extrude(height = alturasRosca, center = false, convexity = 10, twist = 360*vueltas, $fn = resoluciOn)
-translate([Diametro/2-espesor-radioRosca, 0, 0])
-circle(r = radioRosca);*/
+
     Threading(pitch = 2, d=Diametro-(2*espesor), windings = 5, angle = 20, full = true);  
 
 }
@@ -241,15 +234,32 @@ cylinder(d=Diametro-(2*redondeadorMinkowski),$fn=resoluciOn,h=espesor);
     
 
 //Helice arriba
-translate([0,0,(altura/2)-alturasRosca])
-linear_extrude(height = alturasRosca, center = false, convexity = 10, twist = 360*8, $fn = resoluciOn)
-translate([Diametro/2-espesor-radioRosca, 0, 0])
-circle(r = radioRosca);
+translate([0,0,altura/2-20])
+
+    Threading(pitch = 2, d=Diametro-(2*espesor), windings = 10, angle = 20, full = true);  
+
+
+
+
 }//fin de la union
 
 //cubo parametrizable
-translate([0,40,-20])
-       cube([20,80,5],center=true);
+
+//Medidas conectores
+/*
+micro
+7.8mm por 2.7mm
+USB 2.0
+5.5mm por 3.4mm
+*/
+ajusteExtra=0.1;
+alturas=18;
+separaciones=5;
+translate([separaciones,Diametro/2,-alturas])
+       cube([7.8+ajusteExtra,40,2.7+ajusteExtra],center=true);
+
+translate([-separaciones,Diametro/2,-alturas])
+       cube([5.5+ajusteExtra,40,3.4+ajusteExtra],center=true);
 
         }//fin difference
         
@@ -327,12 +337,20 @@ radioRosca=0.6;
     //altura=0.1
     
       cylinder(d=Diametro-(2*espesor)-radioRosca,$fn=resoluciOn,h=alturasRosca,center=true);
-        
+      
+  
+   //Helice abajo
+  
+  translate([0,0,-5])
+
+    threading(pitch = 2, d=Diametro-(2*espesor), windings = 4, angle = 20); 
+  
+    /*
 translate([0,0,-alturasRosca/2])
 linear_extrude(height = alturasRosca, center = false, convexity = 10, twist = 360*4, $fn = resoluciOn)
 translate([Diametro/2-espesor-radioRosca, 0, 0])
 circle(r = radioRosca);
-    
+    */
     translate([0,0,5])
     cube([20,espesor,15],center=true);
 

@@ -54,7 +54,7 @@ for(i=[0:(vueltas-1)/2]){
 }
 
 //Tercer FOR
-translate([0,0,(2*alturasRosca/4)+grosorRosca])
+translate([0,0,(2*alturasRosca/4)])
 rotate(180)
 for(i=[0:(vueltas-1)/2]){
         translate([0,0,alturasRosca*i])

@@ -133,7 +133,7 @@ parte -> 5 tapa pila
 //PARTE 2BIEN
 //PARTE 3BIEN
 //PARTE 4BIEN
-parte=5;
+parte=0;
 
 
 module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=20,radioRosca=0.6,vueltas=4){
@@ -193,7 +193,13 @@ if(parte==3){
 
   compartimiento(Diametro=90,espesor=4,altura=35,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4);
   
-
+    
+    //SEPARADOR
+    for(i=[0:2]){
+        rotate(120*i)
+        translate([-2,0,-0.5*10-(25/2)])
+        cube([4,44,22]);
+    }
 }
 
 
@@ -254,11 +260,14 @@ USB 2.0
 */
 ajusteExtra=0.1;
 alturas=18;
-separaciones=5;
-translate([separaciones,Diametro/2,-alturas])
+//separaciones=5;
+
+//USB 2.0
+translate([0,Diametro/2,-alturas])
        cube([7.8+ajusteExtra,40,2.7+ajusteExtra],center=true);
 
-translate([-separaciones,Diametro/2,-alturas])
+//Micro
+translate([0,Diametro/2,-alturas+4])
        cube([5.5+ajusteExtra,40,3.4+ajusteExtra],center=true);
 
         }//fin difference

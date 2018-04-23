@@ -136,10 +136,10 @@ parte -> 5 tapa pila
 //PARTE 2BIEN
 //PARTE 3BIEN
 //PARTE 4BIEN
-parte=4;
+parte=0;
 
 
-module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=200,radioRosca=0.6,vueltas=4){
+module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=200,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1){
     difference(){
         cylinder(d=Diametro,$fn=resoluciOn,h=altura,center=true);
         cylinder(d=Diametro-2*espesor,$fn=resoluciOn,h=2*altura,center=true);
@@ -168,7 +168,7 @@ cylinder(d=Diametro,$fn=resoluciOn,h=espesor);
   
   //translate([0,0,-separacion])
  translate([0,0,-altura/2-10])
-    threading(pitch = 2, d=Diametro-(2*espesor), windings = 5, angle = 20,steps = resoluciOn); 
+    threading(pitch = 2, d=Diametro-(2*espesor)-(2*toleranciaAbajo), windings = 5, angle = 20,steps = resoluciOn); 
 
 //Helice arriba
 //translate([0,0,separacion])
@@ -177,21 +177,7 @@ translate([0,0,altura/2-10])
     
     
     
-    /*
-    
-    //HELICES ANTIGUAS
-    //Helice abajo
-  
-  translate([0,0,-altura/2-10])
 
-    threading(pitch = 2, d=Diametro-(2*espesor)-(2*radioRosca), windings = 5, angle = 20); 
-
-//Helice arriba
-translate([0,0,altura/2-10])
-
-    Threading(pitch = 2, d=Diametro-(2*espesor)-(2*radioRosca), windings = 5, angle = 20, full = true);  
-    
-    */
 
 }
 
@@ -206,6 +192,7 @@ compartimiento2=95;
 //alturasRosca=10;
 resoluciOn=20;
 radioRosca=0.6;
+    toleranciaAbajo=0.1;
     
     separacion=4;
     
@@ -213,7 +200,7 @@ radioRosca=0.6;
   
   translate([0,0,-separacion])
 
-    threading(pitch = 2, d=Diametro-(2*espesor), windings = 5, angle = 20,steps = resoluciOn); 
+    threading(pitch = 2, d=Diametro-(2*espesor)-(2*toleranciaAbajo), windings = 5, angle = 20,steps = resoluciOn); 
 
 //Helice arriba
 translate([0,0,separacion])
@@ -222,7 +209,7 @@ translate([0,0,separacion])
 }
 
 if(parte==1){
-    compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=400,radioRosca=0.6,vueltas=4);
+    compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=400,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
   
 //SEPARADOR
 translate([0,0,-0.5*10])
@@ -230,7 +217,7 @@ cube([85,2,80-10],center=true);
 }
 
 
-if(parte==2){  compartimiento(Diametro=90,espesor=4,altura=95,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4);
+if(parte==2){  compartimiento(Diametro=90,espesor=4,altura=95,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
   
 
 }
@@ -238,7 +225,7 @@ if(parte==2){  compartimiento(Diametro=90,espesor=4,altura=95,alturasRosca=10,Di
 
 if(parte==3){
 
-  compartimiento(Diametro=90,espesor=4,altura=35,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4);
+  compartimiento(Diametro=90,espesor=4,altura=35,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
   
     
     //SEPARADOR
@@ -257,12 +244,13 @@ if(parte==0){
     Diametro=90;
 espesor=4;
 
-resoluciOn=100;
+resoluciOn=400;
 radioRosca=0.6;
     
     alturasRosca=20;
     altura=40;
     redondeadorMinkowski=10;
+    toleranciaAbajo=0.1;
     
  difference(){
     
@@ -289,7 +277,7 @@ cylinder(d=Diametro-(2*redondeadorMinkowski),$fn=resoluciOn,h=espesor);
 //Helice arriba
 translate([0,0,altura/2-20])
 
-    Threading(pitch = 2, d=Diametro-(2*espesor)-(2*radioRosca), windings = 10, angle = 20, full = true);  
+    Threading(pitch = 2, d=Diametro-(2*espesor)-(2*radioRosca), windings = 10, angle = 20, full = true,steps=resoluciOn);  
 
 
 
@@ -342,30 +330,12 @@ resoluciOn=400;
 radioRosca=0.6;
     altura=5;
     
-    /*
-      //cilindo para cerrar tapa rosca
-translate([0,0,-(altura/2)])
-cylinder(d=Diametro,$fn=resoluciOn,h=espesor);
-    */
-    
-    //cilindo helice abajo
-    /*
-    translate([0,0,-(altura/2)-alturasRosca/2])
-    difference(){
-
         
-            cylinder(d=Diametro-(2*espesor)-radioRosca,$fn=resoluciOn,h=alturasRosca,center=true);
-        
-        cylinder(d=Diametro-(4*espesor),$fn=resoluciOn,h=2*alturasRosca,center=true);
-       
-    }*/
-    //CILINDRO HELICE ABAJO OBSOLETO
-    
     
     //Helice abajo
   translate([0,0,-altura/2-8])
 
-    threading(pitch = 2, d=Diametro-(2*espesor), windings = 5, angle = 20,steps=400); 
+    threading(pitch = 2, d=Diametro-(2*espesor)-(2*toleranciaAbajo), windings = 5, angle = 20,steps=400); 
 
     
     //tapa
@@ -403,7 +373,7 @@ radioRosca=0.6;
   
   translate([0,0,-5])
 
-    threading(pitch = 2, d=Diametro-(2*espesor), windings = 4, angle = 20); 
+    threading(pitch = 2, d=Diametro-(2*espesor)-(2*toleranciaAbajo), windings = 4, angle = 20); 
   
     /*
 translate([0,0,-alturasRosca/2])

@@ -23,7 +23,7 @@ parte -> 5 tapa pila
 use<Naca_sweep.scad> // http://www.thingiverse.com/thing:900137
 
 
-$fn=200;
+//$fn=200;
 
 
 // examples 
@@ -136,7 +136,7 @@ parte -> 5 tapa pila
 //PARTE 2BIEN
 //PARTE 3BIEN
 //PARTE 4BIEN
-parte=0;
+parte=5;
 
 
 module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=200,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1){
@@ -190,7 +190,7 @@ espesor=4;
 compartimiento1=80;
 compartimiento2=95;
 //alturasRosca=10;
-resoluciOn=20;
+resoluciOn=400;
 radioRosca=0.6;
     toleranciaAbajo=0.1;
     
@@ -217,7 +217,7 @@ cube([85,2,80-10],center=true);
 }
 
 
-if(parte==2){  compartimiento(Diametro=90,espesor=4,altura=95,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
+if(parte==2){  compartimiento(Diametro=90,espesor=4,altura=95,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=400,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
   
 
 }
@@ -225,7 +225,7 @@ if(parte==2){  compartimiento(Diametro=90,espesor=4,altura=95,alturasRosca=10,Di
 
 if(parte==3){
 
-  compartimiento(Diametro=90,espesor=4,altura=35,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=100,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
+  compartimiento(Diametro=90,espesor=4,altura=35,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=400,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1);
   
     
     //SEPARADOR
@@ -329,7 +329,7 @@ alturasRosca=10;
 resoluciOn=400;
 radioRosca=0.6;
     altura=5;
-    
+    toleranciaAbajo=0.1;
         
     
     //Helice abajo
@@ -364,6 +364,7 @@ compartimiento2=95;
 alturasRosca=10;
 resoluciOn=100;
 radioRosca=0.6;
+    toleranciaAbajo=0.1;
     //altura=0.1
     
       cylinder(d=Diametro-(2*espesor)-radioRosca,$fn=resoluciOn,h=alturasRosca,center=true);

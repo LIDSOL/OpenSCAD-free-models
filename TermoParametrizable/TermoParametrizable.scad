@@ -136,7 +136,7 @@ parte -> 5 tapa pila
 //PARTE 2BIEN
 //PARTE 3BIEN
 //PARTE 4BIEN
-parte=5;
+parte=4;
 
 
 module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=200,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1){

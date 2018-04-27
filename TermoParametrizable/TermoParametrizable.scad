@@ -136,7 +136,7 @@ parte -> 5 tapa pila
 //PARTE 2BIEN
 //PARTE 3BIEN
 //PARTE 4BIEN
-parte=4;
+parte=0;
 
 
 module compartimiento(Diametro=90,espesor=4,altura=80,alturasRosca=10,Diametro=90,espesor=4,resoluciOn=200,radioRosca=0.6,vueltas=4,toleranciaAbajo=0.1){
@@ -293,17 +293,29 @@ micro
 USB 2.0
 5.5mm por 3.4mm
 */
-ajusteExtra=0.1;
-alturas=18;
+
+ajusteExtra=1;
+alturas=14;
+anchoUSB=15;
+altoMicroUSB=3;
+altoUSB=6;
+espesorSeparacion=1.2
+;
 //separaciones=5;
 
 //USB 2.0
 translate([0,Diametro/2,-alturas])
-       cube([7.8+ajusteExtra,40,2.7+ajusteExtra],center=true);
+       cube([anchoUSB+(2*ajusteExtra),40,altoUSB+(2*ajusteExtra)],center=true);
 
 //Micro
-translate([0,Diametro/2,-alturas+4])
-       cube([5.5+ajusteExtra,40,3.4+ajusteExtra],center=true);
+translate([0,Diametro/2,-alturas+((altoUSB+(2*ajusteExtra))/2)+((altoMicroUSB+(2*ajusteExtra))/2)+espesorSeparacion])
+       cube([7+(2*ajusteExtra),40,altoMicroUSB+(2*ajusteExtra)],center=true);
+
+//Cubo capa delgada
+translate([0,(Diametro/2)-50+27,-alturas+5-2])
+       cube([19+(2*ajusteExtra),40,5+5+6+(2*ajusteExtra)],center=true);
+
+
 
         }//fin difference
         

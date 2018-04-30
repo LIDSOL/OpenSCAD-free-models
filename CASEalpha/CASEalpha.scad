@@ -13,19 +13,21 @@ alturaSolapa                    ->altura extension de case para hacer que embone
 
 lonX=60;
 lonY=70;
-lonZ=40;
+
+lonZ=30;
+//La medida Z es la mitad
 espesor=0.25;
 espesorEstructuras=0.5;
 redondeadorMinkowski=1;
 alturaSolapa=1;
-escalaTexto=10;
+escalaTexto=8;
 postes=1;
 //cube([lonX,lonY,lonZ],center=true);
 
 
 divisiones=6;
-
-parte=0;
+amplitudTornillobase=0.5;
+parte=1;
 
 if(parte==0){
 
@@ -49,8 +51,24 @@ diametro=4;
 tornillo=2;
 menY=(lonY-(2*espesor)-((divisiones-1)*espesor))/divisiones;
 
+//Agujero para tornillo (1,1)
 translate([lonX/2-diametro/2-espesor-espesorEstructuras/2,lonY/2-diametro/2-espesor-menY+diametro/2,-lonZ/2])
-cylinder(r=2,$fn=100,h=lonZ,center=true);
+cylinder(r=tornillo,$fn=100,h=lonZ*2,center=true);
+
+
+//Agujero para tornillo (-1,1)
+translate([-lonX/2+diametro/2+espesor+espesorEstructuras/2,lonY/2-diametro/2-espesor-menY+diametro/2,-lonZ/2])
+cylinder(r=tornillo,$fn=100,h=lonZ*2,center=true);
+
+//Agujero para tornillo (-1,-1)
+translate([-lonX/2+diametro/2+espesor+espesorEstructuras/2,-lonY/2+diametro/2+espesor+menY-diametro/2,-lonZ/2])
+cylinder(r=tornillo,$fn=100,h=lonZ*2,center=true);
+
+//Agujero para tornillo (1,-1)
+translate([lonX/2-diametro/2-espesor-espesorEstructuras/2,-lonY/2+diametro/2+espesor+menY-diametro/2,-lonZ/2])
+cylinder(r=tornillo,$fn=100,h=lonZ*2,center=true);
+
+
 
 }//fin difference
 
@@ -71,19 +89,19 @@ tornillo=2;
 
 //POSTE (1,1)
 translate([lonX/2-diametro/2-espesor-espesorEstructuras/2,lonY/2-diametro/2-espesor-menY+diametro/2,-lonZ/2])
-poste(diametro,tornillo);
+poste(diametro,tornillo+amplitudTornillobase);
 
 //POSTE (-1,1)
 translate([-lonX/2+diametro/2+espesor+espesorEstructuras/2,lonY/2-diametro/2-espesor-menY+diametro/2,-lonZ/2])
-poste(diametro,tornillo);
+poste(diametro,tornillo+amplitudTornillobase);
 
 //POSTE (1,-1)
 translate([lonX/2-diametro/2-espesor-espesorEstructuras/2,-lonY/2+diametro/2+espesor+menY-diametro/2,-lonZ/2])
-poste(diametro,tornillo);
+poste(diametro,tornillo+amplitudTornillobase);
 
 //POSTE (-1,-1)
 translate([-lonX/2+diametro/2+espesor+espesorEstructuras/2,-lonY/2+diametro/2+espesor+menY-diametro/2,-lonZ/2])
-poste(diametro,tornillo);
+poste(diametro,tornillo+amplitudTornillobase);
 
 }//fin postes
 
@@ -119,9 +137,9 @@ Solapa(lonX,lonY,espesor,redondeadorMinkowski,alturaSolapa*2);
 
 
 
-translate([-20,0,lonZ/2+espesor/2+redondeadorMinkowski/2])
+translate([-26,0,lonZ/2+espesor/2+redondeadorMinkowski])
  linear_extrude(height=espesor*2)
- text(size=escalaTexto,font = "Simplex","Texto");
+ text(size=escalaTexto,font = "Simplex","IDEA 1.61");
 
 //####Postes####
 

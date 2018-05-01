@@ -10,15 +10,17 @@ redondeadorMinkowski    -> radio de la esfera que se ocupa para la funcion Minko
 alturaSolapa                    ->altura extension de case para hacer que embone
 */
 
+use<LogoIdea161.scad>
 
 lonX=60;
 lonY=70;
 
-lonZ=30;
+lonZ=10;
 //La medida Z es la mitad
+//Espesor mínimo de estructuras el verdadero espesor o da Minkowski
 espesor=0.25;
-espesorEstructuras=0.5;
-redondeadorMinkowski=1;
+espesorEstructuras=1;
+redondeadorMinkowski=2;
 alturaSolapa=1;
 escalaTexto=8;
 postes=1;
@@ -27,7 +29,8 @@ postes=1;
 
 divisiones=6;
 amplitudTornillobase=0.5;
-parte=1;
+parte=0;
+toleranciaSolapaInterior=0.5;
 
 if(parte==0){
 
@@ -72,9 +75,11 @@ cylinder(r=tornillo,$fn=100,h=lonZ*2,center=true);
 
 }//fin difference
 
+//toleranciaSolapaInterior sirve para disminuir la fricción entre partes de la caja
+
 //solapaInterior
 translate([0,0,-alturaSolapa])
-Solapa(lonX-(espesor),lonY-(espesor),espesor,redondeadorMinkowski/2,alturaSolapa*2);
+Solapa(lonX-(espesor)-toleranciaSolapaInterior,lonY-(espesor)-toleranciaSolapaInterior,espesor,redondeadorMinkowski/2,alturaSolapa*2);
 
 //####Postes####
 
@@ -133,13 +138,19 @@ cube([lonX*2,lonY*2,lonZ*2]);
 translate([0,0,-alturaSolapa*(3/4)])
 Solapa(lonX,lonY,espesor,redondeadorMinkowski,alturaSolapa*2);
 
+separacionElementos=20;
+
 //Texto
-
-
-
-translate([-26,0,lonZ/2+espesor/2+redondeadorMinkowski])
- linear_extrude(height=espesor*2)
+translate([-26,-separacionElementos,lonZ/2+espesor+redondeadorMinkowski/2])
+ linear_extrude(height=redondeadorMinkowski)
  text(size=escalaTexto,font = "Simplex","IDEA 1.61");
+
+//LOGO Idea 1.61
+tamaNioLogo=20;
+translate([0,separacionElementos,lonZ/2+espesor+redondeadorMinkowski/2])
+ linear_extrude(height=redondeadorMinkowski)
+ resize([tamaNioLogo,1.61*tamaNioLogo])
+ LogoIdea();
 
 //####Postes####
 

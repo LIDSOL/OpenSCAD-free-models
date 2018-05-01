@@ -1,7 +1,9 @@
 
 
-module LogoIdea (long=30,esp=4){
+module LogoIdea(){
 
+long=30;
+esp=4;
 
 //linear_extrude(height=3)
 minkowski(){
@@ -68,6 +70,6 @@ difference(){
  
  }//fin module
  
- resize([20,1.61*20])
- LogoIdea();
+ 
+LogoIdea();
  

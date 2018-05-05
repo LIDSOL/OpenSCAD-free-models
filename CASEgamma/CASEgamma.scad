@@ -9,7 +9,7 @@ redondeadorMinkowski    -> radio de la esfera que se ocupa para la funcion Minko
 alturaSolapa                    ->altura extension de case para hacer que embone
 */
 
-use<LogoIdea161.scad>
+//use<LogoIdea161.scad>
 
 lonX=60;
 lonY=70;

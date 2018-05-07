@@ -47,4 +47,4 @@ redondo = 1 --> agujero redondo
 
 
 //linear_extrude(height=3)
-barrasCorr(2,2,3,0.1,(3*0.1)/32,100,redondo=1);
+barrasCorr(2,2,3,0.1,(3*0.1)/32,100,redondo=0);

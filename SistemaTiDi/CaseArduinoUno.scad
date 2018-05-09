@@ -11,7 +11,7 @@ lonZ=25;
 espesor=1.5;
 diametroPoste=5;
 tornillo=2.5;
-parte=0;
+parte=1;
 
 if(parte==0){
    difference(){
@@ -25,6 +25,15 @@ if(parte==0){
        translate([-53.3/2,68.6/2,-12.5/2])
        rotate(-90)
       ArduinoUNO(espesorArduino=1.6,taladroEntradas=20);
+    
+       /*
+       //transformacion inicial
+       translate([-53.3/2,68.6/2,-12.5])
+       rotate(-90)
+       //se aumento 8 en eje y y se redujo 1mm en eje x del la coordenada del último tornillo
+      translate([13.6+1.1-1,3+4.7+27.9+15.2+8,0])
+       cylinder(r=1,$fn=100,h=lonZ*2);
+       */
   }
   
   //####LOGOS####

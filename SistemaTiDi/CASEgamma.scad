@@ -51,20 +51,20 @@ difference(){
 
 //Poste (1,1)
 translate([-diametroPoste+lonX/2,-diametroPoste+lonY/2,0])
-poste(diametroPoste,tornillo,lonZ);
+poste(diametroPoste,tornillo,lonZ,0);
 
 //Poste (-1,1)
 translate([-diametroPoste+lonX/2,+diametroPoste-lonY/2,0])
-poste(diametroPoste,tornillo,lonZ);
+poste(diametroPoste,tornillo,lonZ,0);
 
 
 //Poste (1,-1)
 translate([diametroPoste-lonX/2,-diametroPoste+lonY/2,0])
-poste(diametroPoste,tornillo,lonZ);
+poste(diametroPoste,tornillo,lonZ,0);
 
 //Poste (-1,-1)
 translate([diametroPoste-lonX/2,diametroPoste-lonY/2,0])
-poste(diametroPoste,tornillo,lonZ);
+poste(diametroPoste,tornillo,lonZ,0);
 }//fin parte 0
 
 if(parte==1){
@@ -74,25 +74,46 @@ difference(){
         
     translate([0,0,lonZ])
         cube([lonX*2,lonY*2,lonZ*2],center=true);
-        
+    
+    //ESPESOR ESTANDAR de 1.5, es necesario mencionar solo se ha probado con éste espesor
+    //FALTA AJUSTE
+    //Aguero para tornillo (1,1)
+    translate([-diametroPoste+lonX/2,-diametroPoste+lonY/2,-lonZ/2-(espesor*3)])
+    poste(diametroPoste,tornillo,lonZ,1);
+    
+    //Aguero para tornillo  (-1,1)
+   translate([-diametroPoste+lonX/2,+diametroPoste-lonY/2,-lonZ/2-(espesor*3)])
+   poste(diametroPoste,tornillo,lonZ,1);
+
+
+   //Aguero para tornillo  (1,-1)
+   translate([diametroPoste-lonX/2,-diametroPoste+lonY/2,-lonZ/2-(espesor*3)])
+   poste(diametroPoste,tornillo,lonZ,1);
+
+   //Aguero para tornillo  (-1,-1)
+   translate([diametroPoste-lonX/2,diametroPoste-lonY/2,-lonZ/2-(espesor*3)])
+   poste(diametroPoste,tornillo,lonZ,1);
 }
 
+
 //Poste (1,1)
-translate([-diametroPoste+lonX/2,-diametroPoste+lonY/2,-lonZ/2])
-poste(diametroPoste,tornillo,lonZ);
+translate([-diametroPoste+lonX/2,-diametroPoste+lonY/2,-lonZ/2+(3*espesor/8)])
+poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
 
 //Poste (-1,1)
-translate([-diametroPoste+lonX/2,+diametroPoste-lonY/2,-lonZ/2])
-poste(diametroPoste,tornillo,lonZ);
+translate([-diametroPoste+lonX/2,+diametroPoste-lonY/2,-lonZ/2+(3*espesor/8)])
+poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
 
 
 //Poste (1,-1)
-translate([diametroPoste-lonX/2,-diametroPoste+lonY/2,-lonZ/2])
-poste(diametroPoste,tornillo,lonZ);
+translate([diametroPoste-lonX/2,-diametroPoste+lonY/2,-lonZ/2+(3*espesor/8)])
+poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
 
 //Poste (-1,-1)
-translate([diametroPoste-lonX/2,diametroPoste-lonY/2,-lonZ/2])
-poste(diametroPoste,tornillo,lonZ);
+translate([diametroPoste-lonX/2,diametroPoste-lonY/2,-lonZ/2+(3*espesor/8)])
+poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
+
+
 }//fin parte 0
 
 
@@ -103,13 +124,23 @@ poste(diametroPoste,tornillo,lonZ);
 
 
 //#######POSTE CASE GAMMA#####
-module poste(diametroPoste=5,tornillo=2.5,alturaTornillo){
-translate([0,0,alturaTornillo/4])
-    difference(){
+module poste(diametroPoste=5,tornillo=2.5,alturaTornillo=10,modo=0){
+ if(modo==0){   
+    translate([0,0,alturaTornillo/4])
+            difference(){
 
-        cylinder(d=diametroPoste,$fn=100,h=alturaTornillo/2,center=true);
-        cylinder(d=tornillo,$fn=100,h=alturaTornillo,center=true);
-    }
+                cylinder(d=diametroPoste,$fn=100,h=alturaTornillo/2,center=true);
+                cylinder(d=tornillo,$fn=100,h=alturaTornillo*2,center=true);
+               }
+           }
+ if(modo==1){
+    translate([0,0,alturaTornillo/4])
+            union(){
+
+                cylinder(d=diametroPoste,$fn=100,h=alturaTornillo/2,center=true);
+                cylinder(d=tornillo,$fn=100,h=alturaTornillo*2,center=true);
+               }
+ }
 }//Fin modulo poste (para case gamma)
 
 //#####RENDERIZADOS#####
@@ -119,7 +150,11 @@ lonZ=10;
 espesor=1.5;
 diametroPoste=5;
 tornillo=2.5;
+
 CASEgamma();
+
+//poste(diametroPoste=5,tornillo=2.5,alturaTornillo=10,modo=1);
+
 
 //####LOGOS####
 /*

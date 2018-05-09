@@ -5,6 +5,10 @@ module Idea(escala=0.5){
 long=30;
 esp=6;
 
+//SE INSERTARON VALORES AQUI PARA VERSION 2014
+grueso=3;
+     radio=6;
+
 scale(escala)
 union(){
 //linear_extrude(height=3)
@@ -55,9 +59,11 @@ difference(){
   
  translate([long*(0.3),0])
  union(){
- grueso=3;
+//NO FUNCIONAN AQUI PARA VERSION 2014
+ /*
+grueso=3;
      radio=6;
- 
+*/ 
  difference(){
 
      circle(r=radio,$fn=100);

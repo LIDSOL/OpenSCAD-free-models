@@ -11,7 +11,13 @@ lonZ=25;
 espesor=1.5;
 diametroPoste=5;
 tornillo=2.5;
-parte=1;
+parte=0;
+//logos
+tamaNioLogos=0.5;
+//postes arduino
+alturaPostesArduino=12;
+diametroPosteArduino=6;
+tornilloArduino=3.2;
 
 if(parte==0){
    difference(){
@@ -38,7 +44,7 @@ if(parte==0){
   
   //####LOGOS####
 
-tamaNioLogos=0.5;
+//tamaNioLogos=0.5;
 
 translate([-20*tamaNioLogos+2,-lonY/4,lonZ/2])
 union(){
@@ -61,11 +67,11 @@ if(parte==1){
            
              
        //###Tornillos arduino#####
-       
+       /*
        alturaPostesArduino=12;
          diametroPosteArduino=6;
            tornilloArduino=3.2;
-
+*/
            
       translate([-53.3/2,68.6/2,-12.5])
        rotate(-90)

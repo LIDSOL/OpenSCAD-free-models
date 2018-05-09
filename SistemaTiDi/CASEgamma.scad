@@ -37,7 +37,7 @@ alturaSolapa                    ->altura extension de case para hacer que embone
 
 
 
-module CASEgamma(lonX=60,lonY=70,lonZ=10,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1){
+module CASEgamma(lonX=90,lonY=90,lonZ=180,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1){
 
 if(parte==0){
 difference(){

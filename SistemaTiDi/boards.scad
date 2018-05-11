@@ -119,9 +119,52 @@ cylinder($fn=100,d=2.75,h=taladroEntradas);
 
 }//fin raspberry Pi
 
+module sensorMQ(taladroEntradas=20){
+tornillos=3;
+espesorSensor=1.5;
+//taladroEntradas=20;
+
+//tornillos
+translate([2,2,espesorSensor])
+cylinder(d=tornillos,h=taladroEntradas,$fn=100);
+
+translate([2+27,2,espesorSensor])
+cylinder(d=tornillos,h=taladroEntradas,$fn=100);
+
+translate([2+27,20.3-2,espesorSensor])
+cylinder(d=tornillos,h=taladroEntradas,$fn=100);
+
+translate([2,20.3-2,espesorSensor])
+cylinder(d=tornillos,h=taladroEntradas,$fn=100);
+
+//sensor
+translate([20,20.3/2,espesorSensor])
+cylinder(d=20,h=taladroEntradas,$fn=100);
+
+//tarjeta
+cube([32,20.3,espesorSensor]);
+
+}//fin sensor MQ
+
+module
+taladroEntradas=20;
+espesorSensor=1.5;
+cube([29,14,espesorSensor]);
+
+translate([7,14/2,espesorSensor])
+cylinder(d=3,h=taladroEntradas,$fn=100);
+
+translate([20,14/2,espesorSensor+taladroEntradas/2])
+cube([17,13,taladroEntradas],center=true);
+
 //#####RENDERIZADOS####
+
+//translate([-32/2,-20.3/2,0])
+//sensorMQ();
 
 //ArduinoUNO();
 
 
- RaspberryPi();
+
+
+ //RaspberryPi();

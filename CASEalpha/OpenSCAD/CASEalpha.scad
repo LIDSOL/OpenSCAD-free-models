@@ -12,15 +12,18 @@ alturaSolapa                    ->altura extension de case para hacer que embone
 
 use<LogoIdea161.scad>
 
+//MEDIDAS TARJETA DE PRESENTACION
 lonX=60;
-lonY=70;
+lonY=90;
 
 lonZ=10;
-//La medida Z es la mitad
+//La medida Z es la mitad para amboas casos (parte 1 y parte 2)
+
 //Espesor mínimo de estructuras el verdadero espesor o da Minkowski
 espesor=0.25;
-espesorEstructuras=1;
-redondeadorMinkowski=2;
+//Si las estructuras no se requieren se puede escojer el valor de cero
+espesorEstructuras=0;
+redondeadorMinkowski=3;
 alturaSolapa=1;
 escalaTexto=8;
 postes=1;
@@ -271,9 +274,3 @@ module Solapa(lonX=60,lonY=60,espesor=1,redondeadorMinkowski=0,alturaSolapa=3){
 
 
 
-//solapaExterior
-//translate([lonX/2+espesor,0,0])
-//Solapa(lonX,lonY,espesor,redondeadorMinkowski,3);
-//solapaInterior
-//translate([0,0,2])
-//Solapa(lonX-(espesor),lonY-(espesor),espesor,redondeadorMinkowski/2,3);

@@ -11,7 +11,7 @@ lonZ=25;
 espesor=1.5;
 diametroPoste=5;
 tornillo=2.5;
-parte=0;
+parte=1;
 //logos
 tamaNioLogos=0.5;
 //postes arduino

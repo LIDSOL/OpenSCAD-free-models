@@ -63,4 +63,65 @@ cylinder($fn=100,d=3.2,h=taladroEntradas);
 
 }
 
-ArduinoUNO();
+
+module RaspberryPi(taladroEntradas=10){
+//Raspberry pi
+    espesorTarjeta=1.6;
+   
+    medidaX=85;
+    medidaY=56;
+   
+     /*
+    medidas Rasberry Pi
+     eje "x"= 85mm
+     eje "y"= 56mm
+      espesorTarjeta=1.6
+    */
+    
+//tarjeta
+cube([medidaX,medidaY,espesorTarjeta]);
+
+//Conjunto USB
+translate([medidaX,29-(14.3/2),espesorTarjeta])
+cube([taladroEntradas,14.3,16]);
+
+translate([medidaX,47-(14.3/2),espesorTarjeta])
+cube([taladroEntradas,14.3,16]);
+
+//Conector RJ45
+translate([medidaX,10.25-(15.1/2),espesorTarjeta])
+cube([taladroEntradas,15.1,13.5]);
+
+//GPIO
+translate([3.5*2,49,espesorTarjeta])
+cube([52,6,8.5+taladroEntradas]);
+
+
+//###TornillosRaspberry#####
+
+translate([3.5,3.5,0])
+rotate([180,0,0])
+cylinder($fn=100,d=2.75,h=taladroEntradas);
+
+
+translate([3.5+58,3.5,0])
+rotate([180,0,0])
+cylinder($fn=100,d=2.75,h=taladroEntradas);
+
+translate([3.5,3.5+49,0])
+rotate([180,0,0])
+cylinder($fn=100,d=2.75,h=taladroEntradas);
+
+
+translate([3.5+58,3.5+49,0])
+rotate([180,0,0])
+cylinder($fn=100,d=2.75,h=taladroEntradas);
+
+}//fin raspberry Pi
+
+//#####RENDERIZADOS####
+
+//ArduinoUNO();
+
+
+ RaspberryPi();

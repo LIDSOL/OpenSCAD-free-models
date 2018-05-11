@@ -37,7 +37,7 @@ alturaSolapa                    ->altura extension de case para hacer que embone
 
 
 
-module CASEgamma(lonX=90,lonY=90,lonZ=180,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1){
+module CASEgamma(lonX=90,lonY=90,lonZ=180,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=0){
 
 if(parte==0){
 difference(){
@@ -53,18 +53,57 @@ difference(){
 translate([-diametroPoste+lonX/2,-diametroPoste+lonY/2,0])
 poste(diametroPoste,tornillo,lonZ,0);
 
+//Soporte(1,1,A)
+translate([lonX/2-diametroPoste,lonY/2-espesor,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(1,1,B)
+translate([lonX/2-espesor,lonY/2-diametroPoste,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
 //Poste (-1,1)
 translate([-diametroPoste+lonX/2,+diametroPoste-lonY/2,0])
 poste(diametroPoste,tornillo,lonZ,0);
+
+//Soporte(-1,1,A)
+translate([-lonX/2+diametroPoste,lonY/2-espesor,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(-1,1,B)
+translate([-lonX/2+espesor,lonY/2-diametroPoste,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
 
 
 //Poste (1,-1)
 translate([diametroPoste-lonX/2,-diametroPoste+lonY/2,0])
 poste(diametroPoste,tornillo,lonZ,0);
 
+//Soporte(1,-1,A)
+translate([lonX/2-diametroPoste,-lonY/2+espesor,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(1,-1,B)
+translate([lonX/2-espesor,-lonY/2+diametroPoste,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+
 //Poste (-1,-1)
 translate([diametroPoste-lonX/2,diametroPoste-lonY/2,0])
 poste(diametroPoste,tornillo,lonZ,0);
+
+//Soporte(-1,-1,A)
+translate([-lonX/2+diametroPoste,-lonY/2+espesor,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(-1,-1,B)
+translate([-lonX/2+espesor,-lonY/2+diametroPoste,lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+
+
+
+
 }//fin parte 0
 
 if(parte==1){
@@ -100,18 +139,52 @@ difference(){
 translate([-diametroPoste+lonX/2,-diametroPoste+lonY/2,-lonZ/2+(3*espesor/8)])
 poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
 
+
+//Soporte(1,1,A)
+translate([lonX/2-diametroPoste,lonY/2-espesor,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(1,1,B)
+translate([lonX/2-espesor,lonY/2-diametroPoste,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
 //Poste (-1,1)
 translate([-diametroPoste+lonX/2,+diametroPoste-lonY/2,-lonZ/2+(3*espesor/8)])
 poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
 
+//Soporte(-1,1,A)
+translate([-lonX/2+diametroPoste,lonY/2-espesor,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(-1,1,B)
+translate([-lonX/2+espesor,lonY/2-diametroPoste,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
 
 //Poste (1,-1)
 translate([diametroPoste-lonX/2,-diametroPoste+lonY/2,-lonZ/2+(3*espesor/8)])
 poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
 
+//Soporte(1,-1,A)
+translate([lonX/2-diametroPoste,-lonY/2+espesor,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(1,-1,B)
+translate([lonX/2-espesor,-lonY/2+diametroPoste,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
 //Poste (-1,-1)
 translate([diametroPoste-lonX/2,diametroPoste-lonY/2,-lonZ/2+(3*espesor/8)])
 poste(diametroPoste,tornillo,lonZ-(3*espesor/4),0);
+
+//Soporte(-1,-1,A)
+translate([-lonX/2+diametroPoste,-lonY/2+espesor,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+//Soporte(-1,-1,B)
+translate([-lonX/2+espesor,-lonY/2+diametroPoste,-lonZ/4])
+cube([diametroPoste/2,diametroPoste/2,lonZ/2],center=true);
+
+
 
 
 }//fin parte 0
@@ -144,14 +217,16 @@ module poste(diametroPoste=5,tornillo=2.5,alturaTornillo=10,modo=0){
 }//Fin modulo poste (para case gamma)
 
 //#####RENDERIZADOS#####
-lonX=60;
+
+/*lonX=60;
 lonY=80;
 lonZ=10;
 espesor=1.5;
 diametroPoste=5;
 tornillo=2.5;
+*/
 
-CASEgamma();
+CASEgamma(lonX=90,lonY=90,lonZ=180,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1);
 
 //poste(diametroPoste=5,tornillo=2.5,alturaTornillo=10,modo=1);
 

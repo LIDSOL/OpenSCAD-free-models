@@ -32,9 +32,9 @@
     
     //######RENDERIZADOS######
     
-panelMatriz();
+//panelMatriz(lonX=30,lonY=40,taladro=1,divisiones=5);
 
-   //recortadorMinkPoly(10,10,1);
+   //recortadorMinkPoly(20,5,6);
     
 
-   // recortadorMink();
+   recortadorMink(lonX=10,lonY=20,lonZ=10,esf=3);

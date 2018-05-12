@@ -146,8 +146,8 @@ cube([32,20.3,espesorSensor]);
 
 }//fin sensor MQ
 
-module
-taladroEntradas=20;
+module sensorDHT11(taladroEntradas=20){
+
 espesorSensor=1.5;
 cube([29,14,espesorSensor]);
 
@@ -157,7 +157,11 @@ cylinder(d=3,h=taladroEntradas,$fn=100);
 translate([20,14/2,espesorSensor+taladroEntradas/2])
 cube([17,13,taladroEntradas],center=true);
 
+}
 //#####RENDERIZADOS####
+
+translate([-29/2,-14/2,0])
+ sensorDHT11(30);
 
 //translate([-32/2,-20.3/2,0])
 //sensorMQ();

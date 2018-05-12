@@ -41,13 +41,39 @@ CASEgamma(lonX=90,lonY=90,lonZ=180,espesor=1.5,diametroPoste=5,tornillo=2.5,part
     translate([0,0,-35])
     cube([90-3,90-3,50],center=true);
         
-        //recortes Laterales
+        //Recorte sensores
+        
+        translate([-20,-35,-20])
+        rotate([0,-90,90])
+        translate([-32/2,-20.3/2,0])
+       sensorMQ(50);
+        
+         translate([0,-35,-20])
+           rotate([20,-90,90])
+        translate([-29/2,-14/2,0])
+        sensorDHT11();
+
+
+        
+        
+        //RECORTES Laterales
         
         //inicial
           translate([45,0,-33])
            recortadorMink(75,75,50,15);
+          
+          
+             translate([0,45,-45])
+             rotate([90,0,0])
+           RecortadorEstrella(taladro=50, medidaTriangulo=14,
+    distanciaTriangulos=8,ajuste=2.5,redondeadorPoly=2.5);
+    
+    translate([-45,0,-45])
+             rotate([90,0,90])
+           RecortadorEstrella(taladro=50, medidaTriangulo=14,
+    distanciaTriangulos=8,ajuste=2.5,redondeadorPoly=2.5);
         
-      /*  for(i=[1:3]){
+      /*for(i=[1:3]){
             rotate(90*i)
             translate([45,0,-45])
            recortadorMink(75,75,75,15);
@@ -85,7 +111,43 @@ rotate([180,0,0])
 //}
 //fin parte 1 (CONTENEDORA)
 
+
+
+//Texto
+translate([-30,-45,-65])
+rotate([90,0,0])
+ linear_extrude(height=1)
+ text(size=escalaTexto,font = "Simplex","Idea 1.61");
+
+
+
 }//fin CASE sat
+
+
+module RecortadorEstrella(taladro=50, medidaTriangulo=15,
+    distanciaTriangulos=10,ajuste=2.4,redondeadorPoly=5){
+    for(i=[0:3]){
+                   
+                rotate(90*i)
+                   union(){
+                     translate([-medidaTriangulo*ajuste,distanciaTriangulos,-medidaTriangulo/2])
+                     linear_extrude(height=medidaTriangulo)
+                     recortadorMinkPoly(medidaTriangulo,medidaTriangulo,redondeadorPoly);
+            
+                     mirror([0,1,0]){
+                       translate([-medidaTriangulo*ajuste,distanciaTriangulos,-medidaTriangulo/2])
+                       linear_extrude(height=medidaTriangulo)
+                       recortadorMinkPoly(medidaTriangulo,medidaTriangulo,redondeadorPoly);
+                    }
+                 }
+            
+              } 
+              
+              //cilindro central
+               cylinder(r=10,$fn=100,h=20,center=true);      
+
+
+}
 
 
 module TAPAsat(){
@@ -97,27 +159,10 @@ module TAPAsat(){
            CASEgamma(lonX=90,lonY=90,lonZ=6,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1);
            //recortadorMink(75,75,75,15);
             
+            RecortadorEstrella(taladro=50, medidaTriangulo=14,
+    distanciaTriangulos=8,ajuste=2.5,redondeadorPoly=2.5);
             
-            //Reocrtadores tipo triangulo alrededor del centro
-            for(i=[0:3]){
-                   
-                rotate(90*i)
-                   union(){
-                     translate([-medidaTriangulo*2.4,distanciaTriangulos,-medidaTriangulo/2])
-                     linear_extrude(height=medidaTriangulo)
-                     recortadorMinkPoly(medidaTriangulo,medidaTriangulo,5);
-            
-                     mirror([0,1,0]){
-                       translate([-medidaTriangulo*2.4,distanciaTriangulos,-medidaTriangulo/2])
-                       linear_extrude(height=medidaTriangulo)
-                       recortadorMinkPoly(medidaTriangulo,medidaTriangulo,5);
-                    }
-                 }
-            
-              }      
-             
-     
-                    cylinder(r=10,$fn=100,h=20,center=true);         
+                 
                 
         }
         

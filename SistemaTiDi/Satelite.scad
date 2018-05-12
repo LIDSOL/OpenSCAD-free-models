@@ -222,12 +222,12 @@ translate([diametroPoste-lonX/2,diametroPoste-lonY/2])
  
  //#######RENDERIZADOS########
  
-CASEsat();
+//CASEsat();
  
-rotate([180,0,0]) 
+//rotate([180,0,0]) 
 TAPAsat();
 
-translate([0,0,-60])
-BASEsensores();
+//translate([0,0,-60])
+//BASEsensores();
  
 

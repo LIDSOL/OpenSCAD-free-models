@@ -114,11 +114,11 @@ rotate([180,0,0])
 
 
 //Texto
-translate([-30,-45,-65])
+translate([-32,-45,-65])
 rotate([90,0,0])
  linear_extrude(height=1)
- text(size=escalaTexto,font = "Simplex","Idea 1.61");
-
+// text(size=10,font = "Simplex","Idea 1.61");
+text(size=12,font = "Simplex","RisoSAT");
 
 
 }//fin CASE sat

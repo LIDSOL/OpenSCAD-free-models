@@ -1,5 +1,3 @@
-## Caja3Dparametrizable 
+# Caja3Dparametrizable 
 
-
-
-Proyecto de caja 3D
+Proyecto de caja 3D parametrizable versión inicial

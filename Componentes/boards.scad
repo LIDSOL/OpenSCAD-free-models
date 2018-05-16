@@ -169,7 +169,7 @@ cube([17,13,taladroEntradas],center=true);
 //translate([-32/2,-20.3/2,0])
 //sensorMQ();
 
-//ArduinoUNO();
+//ArduinoUNO(1.5,50);
 
 
 

@@ -1,8 +1,8 @@
-use<CASEgamma.scad>
-use<boards.scad>
+include<./../CASEgamma/CASEgamma.scad>;
+include<./../Componentes/boards.scad>;
 //LOGOS
-use<LogoIdea161.scad>
-use<LogoDitacRegSCorch.scad>
+include<./../Logos/LogoIdea161.scad>;
+include<./../Logos/LogoDitacRegSCorch.scad>;
 
 //#####RENDERIZADOS#####
 lonX=70;
@@ -11,7 +11,7 @@ lonZ=25;
 espesor=1.5;
 diametroPoste=5;
 tornillo=2.5;
-parte=1;
+parte=0;
 //logos
 tamaNioLogos=0.5;
 //postes arduino

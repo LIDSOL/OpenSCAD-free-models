@@ -67,13 +67,17 @@ CASEgamma(lonX=90,lonY=90,lonZ=180,espesor=1.5,diametroPoste=5,tornillo=2.5,part
           
              translate([0,45,-45])
              rotate([90,0,0])
-           RecortadorEstrella(taladro=50, medidaTriangulo=14,
-    distanciaTriangulos=8,ajuste=2.5,redondeadorPoly=2.5);
+                         
+            translate([0,0,-4])
+            linear_extrude(height=6)
+            RecortadorEstrellaLocal();
+   
     
     translate([-45,0,-45])
              rotate([90,0,90])
-           RecortadorEstrella(taladro=50, medidaTriangulo=14,
-    distanciaTriangulos=8,ajuste=2.5,redondeadorPoly=2.5);
+               translate([0,0,-4])
+            linear_extrude(height=6)
+           RecortadorEstrellaLocal();
         
       /*for(i=[1:3]){
             rotate(90*i)
@@ -144,28 +148,17 @@ text(size=12,font = "Simplex","RisoSAT");
 }//fin CASE sat
 
 
-module RecortadorEstrella(taladro=50, medidaTriangulo=15,
-    distanciaTriangulos=10,ajuste=2.4,redondeadorPoly=5){
-    for(i=[0:3]){
-                   
-                rotate(90*i)
-                   union(){
-                     translate([-medidaTriangulo*ajuste,distanciaTriangulos,-medidaTriangulo/2])
-                     linear_extrude(height=medidaTriangulo)
-                     recortadorMinkPoly(medidaTriangulo,medidaTriangulo,redondeadorPoly);
-            
-                     mirror([0,1,0]){
-                       translate([-medidaTriangulo*ajuste,distanciaTriangulos,-medidaTriangulo/2])
-                       linear_extrude(height=medidaTriangulo)
-                       recortadorMinkPoly(medidaTriangulo,medidaTriangulo,redondeadorPoly);
-                    }
-                 }
-            
-              } 
-              
-              //cilindro central
-               cylinder(r=10,$fn=100,h=20,center=true);      
+module RecortadorEstrellaLocal(){
+   
+   lonX=90;
+    lonY=90;
+    orillas=5;
 
+difference(){
+    
+    square([lonX-(orillas/2),lonY-(orillas/2)],center=true);
+RecortadorEstrella(lonX=lonX, lonY=lonY,orillas=orillas,redondeadorPoly=3);
+    }
 
 }
 
@@ -179,8 +172,9 @@ module TAPAsat(){
            CASEgamma(lonX=90,lonY=90,lonZ=6,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1);
            //recortadorMink(75,75,75,15);
             
-            RecortadorEstrella(taladro=50, medidaTriangulo=14,
-    distanciaTriangulos=8,ajuste=2.5,redondeadorPoly=2.5);
+            translate([0,0,-4])
+            linear_extrude(height=6)
+            RecortadorEstrellaLocal();
             
                  
                 

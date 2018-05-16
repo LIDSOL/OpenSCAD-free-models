@@ -218,6 +218,7 @@ module TAPAsat(){
  lonX=90;
  lonY=90;
  espesor=1.5;
+      toleranciaOrillas=1;
       
       difference(){
    linear_extrude(height=1.5)
@@ -227,7 +228,7 @@ difference(){
     //espacioes entre miniProto=36mm
     
     
-    panelMatriz(lonX-(2*espesor),lonY-(2*espesor),taladro=3.5/2,divisiones=(lonX-(2*espesor))/36);
+    panelMatriz(lonX-(2*espesor)-(2*toleranciaOrillas),lonY-(2*espesor)-(2*toleranciaOrillas),taladro=3.5/2,divisiones=(lonX-(2*espesor))/36);
     echo((lonX-(2*espesor))/36);
     //circle(r=12,$fn=100);
     

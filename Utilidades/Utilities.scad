@@ -95,14 +95,13 @@
 }//fin module
     
     //######RENDERIZADOS######
+
 //Se recomienda no tener renderizados (debugging)    
 
 //panelMatriz(lonX=40,lonY=40,taladro=2,divisiones=4);
 
    //recortadorMinkPoly(25,25,4);
     
-
 //RecortadorEstrella(lonX=200, lonY=200,orillas=10,redondeadorPoly=6);
     
-
    //recortadorMink(lonX=10,lonY=20,lonZ=10,esf=3);

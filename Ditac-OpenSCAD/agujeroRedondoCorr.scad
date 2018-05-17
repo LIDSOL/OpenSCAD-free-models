@@ -12,4 +12,7 @@ gamma=alfa+beta;
 
 }
 
-agujeroRedondoCorr();
+//agujeroRedondoCorr();
+
+ // circle(r=2.3,center=true);
+echo((3/sqrt(2))+0.1+(3*0.1)/3);

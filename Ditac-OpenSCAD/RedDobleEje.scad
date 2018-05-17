@@ -1,7 +1,6 @@
-use<RedMotShaft.scad>
-use<agujeroRedondoCorr.scad>
+include<RedMotShaft.scad>;
 
-module redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,resoluciOn=100,modo=1){
+module redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1){
     
     
     translate([0,0,-alto/2])
@@ -11,7 +10,7 @@ rotate([90,0,0])
      
      //para salida de motor
      if(modo==0){
-    cylinder(d=5.4+0.1,$fn=resoluciOn,h=eje);
+    cylinder(d=5.4+0.1,h=eje);
      }
      //para visualizar motor
      else if(modo==1){
@@ -21,7 +20,7 @@ RedMotShaft();
      // para agarre
      else if(modo==2){  
      linear_extrude(height=eje)
-     agujeroRedondoCorr();
+     circle(r=2.3,center=true);
      }
     
 translate([0,-ancho/2,0])
@@ -34,16 +33,16 @@ cube([largo,ancho,alto]);
      //tope motor reductor
      translate([11.2+11,eje/2,alto/2])
 rotate([90,0,0])
-cylinder(d=4,$fn=resoluciOn,h=eje);
+cylinder(d=4,h=eje);
      
     //tornillos
     translate([31.8,eje/2,alto/2+(17.5/2)])
 rotate([90,0,0])
-cylinder(d=3,$fn=resoluciOn,h=eje);
+cylinder(d=3,h=eje);
     
     translate([31.8,eje/2,alto/2-(17.5/2)])
 rotate([90,0,0])
-cylinder(d=3,$fn=resoluciOn,h=eje);
+cylinder(d=3,h=eje);
    
  }//fin union 
 }
@@ -52,5 +51,6 @@ cylinder(d=3,$fn=resoluciOn,h=eje);
 //modo 1 --> Para visualizar shaft igual a motor
 //modo 2- -> Agujero Redondo (misma medida baseDitacCorr)
 
-redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,resoluciOn=100,modo=2);
+$fn=100;
+redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1);
 

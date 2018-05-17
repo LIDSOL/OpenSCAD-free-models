@@ -2,6 +2,7 @@
 //home/pablovc/Documentos/OpenSCAD-free-models/SistemaTiDi
 include<./../CASEgamma/CASEgamma.scad>;
 include<./../Componentes/boards.scad>;
+include<./../Componentes/sensores.scad>;
 include<./../Utilidades/Utilities.scad>;
 
    
@@ -269,14 +270,14 @@ module Apoyo(espesor=1.6,altura=20,longitud=10){
  
 //CASEgamma(lonX=90,lonY=90,lonZ=6,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=1);
 
-//CASEsat();
+CASEsat();
  
-//rotate([180,0,0]) 
-//TAPAsat();
+rotate([180,0,0]) 
+TAPAsat();
 
 
 
-//translate([0,0,-60])
+translate([0,0,-60])
 BASEsensores();
  
 

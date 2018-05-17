@@ -152,6 +152,9 @@ cube([22.2,12,26],center=true);
 }
 //FIN SERVO
 
+//Complemento para servos
+cylinder(r=7.4,h=2.7);
+
 //####RENDERIZADOS#####
 $fn=100;
 

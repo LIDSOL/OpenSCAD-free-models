@@ -60,6 +60,7 @@ balinTrapecio(lonA=lonA,lonB=lonB,lonD=lonD,lonE=lonE,lonF=lonF,lonE=lonE,lonG=l
 }
 
 //###RENDERIZADOS###
+//Se recomienda no tener renderizados (debugging)
 $fn=20;
 /*
 radioExterno        ->          radio Externo del rodamiento

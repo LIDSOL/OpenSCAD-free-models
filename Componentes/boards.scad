@@ -123,9 +123,9 @@ cylinder($fn=100,d=2.75,h=taladroEntradas);
 //#####RENDERIZADOS####
 //Se recomienda no tener renderizados (debugging)
 
-//ArduinoUNO(1.5,50);
+//ArduinoUNO(1.5,20);
 
 
 
 
- //RaspberryPi();
+ RaspberryPi();

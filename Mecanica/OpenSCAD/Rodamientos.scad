@@ -19,7 +19,7 @@ A la figura característica se le llamara perfilTrapecio
 
 */
 
-module perfilTrapecio(lonA=12,lonB=4,lonD=1,lonE=1,lonF=4,lonG=2){
+module perfilTrapecio(lonA=12,lonB=4,lonD=2,lonE=2,lonF=4,lonG=2){
              polygon([[lonB,lonA/2],[0,lonA/2],[0,-lonA/2],[lonB,-lonA/2],[lonB,-lonA/2+lonD],[lonB-lonG,-lonA/2+lonD+lonE],[lonB-lonG,lonA/2-lonD-lonE],[lonB,lonA/2-lonD]]);
 }
 
@@ -35,7 +35,7 @@ module balinTrapecio(lonA=12,lonB=3,lonD=1,lonE=1,lonF=4,lonE=1,lonG=1,radioInte
           }
       }
 
-module rodamiento(radioExterno=11,radioInterno=4,tol=0.65,balines=8,lonA=12,lonB=2.5,lonD=1,lonE=1,lonF=4,lonE=1,lonG=1){
+module rodamiento(radioExterno=11,radioInterno=4,tol=0.65,balines=8,lonA=12,lonB=2.5,lonD=2,lonE=2,lonF=4,lonE=1,lonG=1){
     
     lonC=radioExterno-radioInterno-(2*lonB)-(2*tol);
 
@@ -49,6 +49,17 @@ rotate_extrude(convexity = 10)
 translate([-radioInterno-(radioExterno-radioInterno),0,0])
 perfilTrapecio(lonA=lonA,lonB=lonB,lonD=lonD,lonE=lonE,lonF=lonF,lonG=lonG);
 
+//separadores balines
+rotate((360/balines)/2)
+for(i=[0:balines-1]){
+    angulo=360/balines;
+     rotate(i*angulo)
+translate([radioInterno,0,0])
+    rotate([0,90,0])
+    linear_extrude((radioExterno-radioInterno)/1.5,scale=0.75)
+    square([lonF,lonC/2],center=true);
+}
+
 //Banlines
 for(i=[0:balines-1]){
     angulo=360/balines;
@@ -61,7 +72,7 @@ balinTrapecio(lonA=lonA,lonB=lonB,lonD=lonD,lonE=lonE,lonF=lonF,lonE=lonE,lonG=l
 
 //###RENDERIZADOS###
 //Se recomienda no tener renderizados (debugging)
-$fn=20;
+$fn=200;
 /*
 radioExterno        ->          radio Externo del rodamiento
 radioInterno        ->          radio Interno del rodamiento
@@ -69,5 +80,4 @@ tol                         ->          tolerancia entre "baline y piezas extern
 lonA                       ->         ancho del rodamiento
 lonB                        ->        medida de cierre entre las piezas interna y externa
 */
-
-//rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=12,lonB=2.5);
+rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=12,lonB=2.5);

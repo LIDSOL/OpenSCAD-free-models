@@ -80,4 +80,4 @@ tol                         ->          tolerancia entre "baline y piezas extern
 lonA                       ->         ancho del rodamiento
 lonB                        ->        medida de cierre entre las piezas interna y externa
 */
-rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=12,lonB=2.5);
+//rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=12,lonB=2.5);

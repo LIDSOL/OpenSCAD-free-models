@@ -1,3 +1,10 @@
+
+include<./../../Componentes/motores.scad>;
+include<Encoder.scad>;
+include<Rodamientos.scad>;
+
+
+
 //Programa track hace llantas y orugas
 
 
@@ -14,7 +21,7 @@
 
 
 
-module track(radio=40,tol=0.1,espesor=1,ancho=20,lonL=80,modo=0,dientes=36,alturaDentado=6){
+module track(radio=40,tol=0.1,espesor=1,ancho=20,lonL=80,modo=0,dientes=36,alturaDentado=6,alturaDentadoInterno=2){
 
 Pi=3.14159;
     //Cálculo para 
@@ -43,8 +50,8 @@ union(){
         rotate(angulo*i)
         union(){
             //internos
-            translate([radio-1,0,0])
-            cube([2,1,ancho/3],center=true);
+            translate([radio-(alturaDentadoInterno/2),0,0])
+            cube([alturaDentadoInterno,1,ancho/3],center=true);
 
             //externos
             translate([radio+espesor+tol,0,0])
@@ -76,8 +83,8 @@ translate([0,-lonL/2,0])
         rotate(angulo*i)
         union(){
             //internos
-            translate([radio-1,0,0])
-            cube([2,1,ancho/3],center=true);
+            translate([radio-(alturaDentadoInterno/2),0,0])
+            cube([alturaDentadoInterno,1,ancho/3],center=true);
 
             //externos
             translate([radio+espesor+tol,0,0])
@@ -116,8 +123,8 @@ if(modo==1){
         rotate(angulo*i)
         union(){
             //internos
-            translate([Radio-1,0,0])
-            cube([2,1,ancho/3],center=true);
+            translate([Radio-(alturaDentadoInterno/2),0,0])
+            cube([alturaDentadoInterno,1,ancho/3],center=true);
 
             //externos
             translate([Radio+espesor+tol,0,0])
@@ -146,6 +153,35 @@ modo        -> modo de vista para cadena extendida o reducida (imresion)
                 1 para verla en circunferencia
 */
 
+//RedMotShaft();
+
+
+radio=30;
+espesor=4;
+ancho=20;
+alturaDentadoInterno=2;
+
+rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=20,lonB=2.5);
+
+translate([0,0,-10])
+linear_extrude(height=20)
+Encoder(cuentas=16,Radio=30-alturaDentadoInterno,RadioEje=11,toleranciaExterna=0,toleranciaInterna=0,doble=0);
+
+translate([0,0,-20/3])
+cilindroEspesor(radio=30-alturaDentadoInterno,espesor=alturaDentadoInterno,ancho=20/3);
+
+translate([0,0,20/3])
+cilindroEspesor(radio=30-alturaDentadoInterno,espesor=alturaDentadoInterno,ancho=20/3);
+
+
+
+module cilindroEspesor(radio=30,espesor=4,ancho=20){
+    difference(){
+            cylinder(r=radio+espesor,h=ancho,center=true);
+            cylinder(r=radio,h=ancho*2,center=true);
+    
+        }
+    }
 
 track(radio=30,tol=0.1,espesor=2,ancho=20,lonL=60,modo=0,dientes=26,alturaDentado=2);
 

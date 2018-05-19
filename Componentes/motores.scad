@@ -157,12 +157,13 @@ cube([22.2,12,26],center=true);
 
 //####RENDERIZADOS#####
 $fn=100;
+//RedMotShaft();
 
 //modo 0 --> Para recortar agujero para salida de motor
 //modo 1 --> Para visualizar shaft igual a motor
 //modo 2- -> Agujero Redondo (misma medida baseDitacCorr)
 
-redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1);
+//redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1);
 
 //motorPololu();
 

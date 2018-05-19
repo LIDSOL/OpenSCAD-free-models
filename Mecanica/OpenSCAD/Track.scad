@@ -147,8 +147,8 @@ modo        -> modo de vista para cadena extendida o reducida (imresion)
 */
 
 
-//track(radio=30,tol=0.1,espesor=1,ancho=20,lonL=60,modo=1,dientes=36,alturaDentado=2);
+track(radio=30,tol=0.1,espesor=2,ancho=20,lonL=60,modo=0,dientes=26,alturaDentado=2);
 
 //ejemplo llanta
-//track(radio=10,tol=0.1,espesor=10,ancho=30,lonL=0,modo=1,dientes=20,alturaDentado=3);
+//track(radio=10,tol=0.1,espesor=10,ancho=30,lonL=0,modo=1,dientes=20,alturaDentado=4);
 

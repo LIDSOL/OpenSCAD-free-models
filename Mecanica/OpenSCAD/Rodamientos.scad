@@ -35,7 +35,7 @@ module balinTrapecio(lonA=12,lonB=3,lonD=1,lonE=1,lonF=4,lonE=1,lonG=1,radioInte
           }
       }
 
-module rodamiento(radioExterno=11,radioInterno=4,tol=0.65,balines=8,lonA=12,lonB=2.5,lonD=2,lonE=2,lonF=4,lonE=1,lonG=1){
+module rodamiento(radioExterno=11,radioInterno=4,tol=1,balines=8,lonA=12,lonB=2.5,lonD=2,lonE=2,lonF=4,lonE=1,lonG=1){
     
     lonC=radioExterno-radioInterno-(2*lonB)-(2*tol);
 
@@ -56,8 +56,8 @@ for(i=[0:balines-1]){
      rotate(i*angulo)
 translate([radioInterno,0,0])
     rotate([0,90,0])
-    linear_extrude((radioExterno-radioInterno)/1.5,scale=0.75)
-    square([lonF,lonC/2],center=true);
+    linear_extrude((radioExterno-radioInterno)/2,scale=0.75)
+    square([lonF,lonC],center=true);
 }
 
 //Banlines
@@ -80,4 +80,4 @@ tol                         ->          tolerancia entre "baline y piezas extern
 lonA                       ->         ancho del rodamiento
 lonB                        ->        medida de cierre entre las piezas interna y externa
 */
-//rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=12,lonB=2.5);
+rodamiento(radioExterno=11,radioInterno=4,tol=0.7,balines=10,lonA=12,lonB=2.5);

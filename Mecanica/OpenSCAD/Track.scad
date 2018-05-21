@@ -1,8 +1,9 @@
 
-include<./../../Componentes/motores.scad>;
-include<Encoder.scad>;
-include<Rodamientos.scad>;
-
+//include<./../../Componentes/motores.scad>;
+//include<Encoder.scad>;
+//include<Rodamientos.scad>;
+//include<RodamientoEsfera.scad>;
+//include<./../../Utilidades/Utilities.scad>;
 
 
 //Programa track hace llantas y orugas
@@ -26,6 +27,7 @@ module track(radio=40,tol=0.1,espesor=1,ancho=20,lonL=80,modo=0,dientes=36,altur
 Pi=3.14159;
     //Cálculo para 
 Radio=(Pi*2*radio+2*lonL)/(2*Pi);
+    echo(Radio);
 
 
 if(modo==0){
@@ -140,7 +142,7 @@ if(modo==1){
 
 //#####RENDERIZADOS####
 //Se recomienda no tener renderizados (debugging)
-$fn=400;
+$fn=40;
 /*
 radio       -> radio para las ruedas
  Si se requiere hacer llantas la seccion L debe ser 0
@@ -153,37 +155,21 @@ modo        -> modo de vista para cadena extendida o reducida (imresion)
                 1 para verla en circunferencia
 */
 
-//RedMotShaft();
-
-
 radio=30;
 espesor=4;
-ancho=20;
+ancho=6.1;
 alturaDentadoInterno=2;
 
-rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=20,lonB=2.5);
-
-translate([0,0,-10])
-linear_extrude(height=20)
-Encoder(cuentas=16,Radio=30-alturaDentadoInterno,RadioEje=11,toleranciaExterna=0,toleranciaInterna=0,doble=0);
-
-translate([0,0,-20/3])
-cilindroEspesor(radio=30-alturaDentadoInterno,espesor=alturaDentadoInterno,ancho=20/3);
-
-translate([0,0,20/3])
-cilindroEspesor(radio=30-alturaDentadoInterno,espesor=alturaDentadoInterno,ancho=20/3);
+track(radio=radio,tol=0.1,espesor=2,ancho=ancho,lonL=60,modo=0,dientes=26,alturaDentado=1,alturaDentadoInterno=3);
 
 
 
-module cilindroEspesor(radio=30,espesor=4,ancho=20){
-    difference(){
-            cylinder(r=radio+espesor,h=ancho,center=true);
-            cylinder(r=radio,h=ancho*2,center=true);
-    
-        }
-    }
 
-track(radio=30,tol=0.1,espesor=2,ancho=20,lonL=60,modo=0,dientes=26,alturaDentado=2);
+//rodamiento(radioExterno=11,radioInterno=4,tol=0.525,balines=10,lonA=20,lonB=2.5);
+//rodamiento(radioBalero=12,paredExterna=0.5,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=250);
+
+
+
 
 //ejemplo llanta
 //track(radio=10,tol=0.1,espesor=10,ancho=30,lonL=0,modo=1,dientes=20,alturaDentado=4);

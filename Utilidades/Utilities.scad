@@ -94,7 +94,17 @@
             }
         }
     }
-}//fin module
+}//fin module panel matriz
+
+
+module rondana (ancho=8,radioInterno=5,radioExterno=12,resoluciOn=100){
+    
+    difference(){
+            cylinder(r=radioExterno,h=ancho,center=true,$fn=resoluciOn);
+            cylinder(r=radioInterno,h=2*ancho,center=true,$fn=resoluciOn);
+    }
+    
+}//fin module rondana
     
     //######RENDERIZADOS######
 

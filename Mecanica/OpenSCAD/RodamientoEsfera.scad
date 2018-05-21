@@ -58,6 +58,7 @@ balinesCeil=ceil(balines);
 
 //####Debugging####
 //echo(balinesCeil);
+echo("AnchoBalero",ancho);
 //echo(ancho);
 //return ancho;
 
@@ -77,6 +78,6 @@ for(i=[0:(balinesCeil-ajusteEnteroBalines)]){
 $fn=40;
 
 //el ajuste entre balines le quita un balin en caso de ser necesario
-//hola=rodamiento(radioBalero=12,paredExterna=0.5,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=250);
+rodamiento(radioBalero=12,paredExterna=0.5,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=250);
 
-//hola=echo(ancho);
+

@@ -27,7 +27,7 @@ module track(radio=40,tol=0.1,espesor=1,ancho=20,lonL=80,modo=0,dientes=36,altur
 Pi=3.14159;
     //Cálculo para 
 Radio=(Pi*2*radio+2*lonL)/(2*Pi);
-    echo(Radio);
+    echo("RadioImprimible",Radio);
 
 
 if(modo==0){

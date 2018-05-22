@@ -1,17 +1,6 @@
 
 include<./../../Utilidades/Utilities.scad>;
 
-/*
-//###Utilidasdes####
-module rondana (ancho=8,radioInterno=5,radioExterno=12,resoluciOn=100){
-    
-    difference(){
-            cylinder(r=radioExterno,h=ancho,center=true,$fn=resoluciOn);
-            cylinder(r=radioInterno,h=2*ancho,center=true,$fn=resoluciOn);
-    }
-    
-}//fin module rondana
-*/
 
 //###Modulo rodamiento###
 module rodamiento(radioBalero=14,paredExterna=1,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=100){
@@ -73,11 +62,45 @@ for(i=[0:(balinesCeil-ajusteEnteroBalines)]){
 
 }//fin module
 
+
+//####COMPLEMENTOS####
+
+
+module pinRodamiento(radioExterno=5,espesor=1,alturaPin=12,tol=0.1){
+
+difference(){
+    union(){
+        rondana(ancho=alturaPin,radioInterno=radioExterno-espesor,radioExterno=radioExterno-tol);
+       translate([0,0,(alturaPin/2)-espesor/4])
+      rotate_extrude(convexity=10)
+        translate([radioExterno-tol,0])
+        circle(r=espesor/4);
+        }
+        //cilindros
+    rotate([0,90,0])
+    cylinder(r=espesor,h=10,center=true);
+   rotate([90,90,0])
+    cylinder(r=espesor,h=10,center=true);
+//cubos
+        
+        translate([0,0,alturaPin/2])
+        cube([espesor/2,radioExterno*4,alturaPin],center=true);
+
+        rotate(90)        
+        translate([0,0,alturaPin/2])
+        cube([espesor/2,radioExterno*4,alturaPin],center=true);
+
+
+}
+
+}//fin pin rodamiento
 //####RENDERIZADOS####
 
 $fn=40;
 
+//pinRodamiento(radioExterno=5,espesor=1,alturaPin=22,tol=0.1);
+
 //el ajuste entre balines le quita un balin en caso de ser necesario
-rodamiento(radioBalero=12,paredExterna=0.5,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=250);
+//rodamiento(radioBalero=12,paredExterna=0.5,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=250);
 
 

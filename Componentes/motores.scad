@@ -32,6 +32,7 @@ rotate([90,0,0])
      }
      //para visualizar motor
      else if(modo==1){
+         rotate([0,0,90])
 linear_extrude(height=eje)
 RedMotShaft();
      }

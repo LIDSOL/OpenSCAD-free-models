@@ -255,8 +255,8 @@ circle(r=3);
 */
 
 //Renderizado de la caja en base a la funcion caja SCTapa
-linear_extrude(height=3)
-cajaSCTapa(largo=80,ancho=80,alto=40,espesor=3,dientes=8,modo=1);
+//linear_extrude(height=3)
+cajaSCTapa(largo=60,ancho=90,alto=50,espesor=3,dientes=6,modo=1);
 
 
 

@@ -160,7 +160,7 @@ espesor=4;
 ancho=6.1;
 alturaDentadoInterno=2;
 
-track(radio=radio,tol=0.1,espesor=2,ancho=ancho,lonL=60,modo=0,dientes=26,alturaDentado=1,alturaDentadoInterno=3);
+//track(radio=radio,tol=0.1,espesor=2,ancho=ancho,lonL=60,modo=0,dientes=26,alturaDentado=1,alturaDentadoInterno=3);
 
 
 

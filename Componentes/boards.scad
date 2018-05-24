@@ -1,6 +1,6 @@
 
 
-module ArduinoUNO(espesorArduino=1.6,taladroEntradas=10){
+module ArduinoUNODraft(taladroEntradas=10){
     
      /*
     medidas ARDUINO UNO
@@ -9,6 +9,9 @@ module ArduinoUNO(espesorArduino=1.6,taladroEntradas=10){
     12.5
     */
     
+    //medidas
+    espesorArduino=1.6;
+
 //tarjeta
 cube([68.6,53.3,espesorArduino]);
 
@@ -60,6 +63,31 @@ cylinder($fn=100,d=3.2,h=taladroEntradas);
  //se redujo 8 mm en eje "x" y se aumento 1mm en eje "y" del la coordenada del último tornillo
       translate([13.6+1.1-8,3+4.7+27.9+15.2-1,0])
        cylinder(d=3.2,$fn=100,h=10.9+taladroEntradas);
+   
+
+
+}
+
+module ArduinoUNO(TaladroEntradas=10,modo=0){
+   
+   /*
+    medidas ARDUINO UNO
+    68.6
+    53.3
+    12.5
+    */
+    
+    echo("Medidas arduino",)
+   
+    if(modo==0){
+
+            ArduinoUNODraft(TaladroEntradas=TaladroEntradas);
+    }
+
+     if(modo==1){
+            translate([-68.6/2,-53.3/2,-12.5/2])
+            ArduinoUNODraft(TaladroEntradas=TaladroEntradas);
+    }
 
 }
 
@@ -123,9 +151,17 @@ cylinder($fn=100,d=2.75,h=taladroEntradas);
 //#####RENDERIZADOS####
 //Se recomienda no tener renderizados (debugging)
 
-//ArduinoUNO(1.5,20);
+//los modos se usan para reposicionar el objeto
+/*
+el primer argumento es la longitud de los taladros
+el segundo argumento es el modo o posicionamiento
+modo = 0 esquinado
+modo = 1 el centro del objeto en el origen
+*/
+
+ArduinoUNO(20,1);
 
 
 
 
- //RaspberryPi(10);
+ //RaspberryPi(10,1);

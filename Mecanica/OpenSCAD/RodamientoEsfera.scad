@@ -8,33 +8,29 @@ module rodamiento(radioBalero=14,paredExterna=1,radioInterno=5,tol=0.2,ajusteEnt
 Pi=3.14159;
 
 radioExterno=radioBalero-paredExterna;
-
 paredInterna=(radioExterno-radioInterno)/4;
 
 
 
-radioEsfera=(radioExterno-radioInterno)/2-tol;
+radioEsfera=(radioExterno-radioInterno)/2;
 ancho=(radioEsfera*2);
 
-
-
+radioTrayectoria=radioExterno-radioEsfera;
+perimetroTrayectoria=2*Pi*radioTrayectoria;
 
 
 //rondana(ancho=ancho,radioInterno=radioExterno,radioExterno=radioExterno+paredExterna);
 
 difference(){
-    rondana(ancho=ancho,radioInterno=radioInterno,radioExterno=radioExterno+paredExterna,resoluciOn=resoluciOn);
+    rondana(ancho=ancho,radioInterno=radioInterno,radioExterno=radioBalero,resoluciOn=resoluciOn);
     
     rotate_extrude(convexity = 10,$fn=resoluciOn)
-    translate([radioExterno-radioEsfera+tol, 0, 0])
-    circle(r = radioEsfera+tol);
+    translate([radioTrayectoria, 0, 0])
+    circle(r = radioEsfera);
     
       rondana(ancho=2*ancho,radioInterno=radioInterno+paredInterna,radioExterno=radioExterno-paredInterna,resoluciOn=resoluciOn);
 
 }
-
-radioTrayectoria=radioExterno-radioEsfera+tol;
-perimetroTrayectoria=2*Pi*radioTrayectoria;
 
 
 //Calculo numero de balines
@@ -48,16 +44,25 @@ balinesCeil=ceil(balines);
 //####Debugging####
 //echo(balinesCeil);
 echo("AnchoBalero",ancho);
-//echo(ancho);
-//return ancho;
+
 
 angulo=360/(balinesCeil-ajusteEnteroBalines);
 
 for(i=[0:(balinesCeil-ajusteEnteroBalines)]){
     rotate(i*angulo)
     translate([radioTrayectoria, 0, 0])
-    sphere(r=radioEsfera);
+    sphere(r=radioEsfera-tol);
     
+}
+
+
+//postes balines (postes para qeu los balines puedan ser impresos)
+translate([0,0,-radioEsfera])
+for(i=[0:(balinesCeil-ajusteEnteroBalines)]){
+    rotate(i*angulo)
+    translate([radioTrayectoria, 0, 0])
+    //sphere(r=radioEsfera-tol);
+    cylinder(r=tol,h=radioEsfera);
 }
 
 }//fin module
@@ -96,11 +101,11 @@ difference(){
 }//fin pin rodamiento
 //####RENDERIZADOS####
 
-$fn=40;
+$fn=100;
 
 //pinRodamiento(radioExterno=5,espesor=1,alturaPin=22,tol=0.1);
 
 //el ajuste entre balines le quita un balin en caso de ser necesario
-//rodamiento(radioBalero=12,paredExterna=0.5,radioInterno=5,tol=0.2,ajusteEnteroBalines=1,resoluciOn=250);
+rodamiento(radioBalero=14,paredExterna=2,radioInterno=5,tol=0.5,ajusteEnteroBalines=1,resoluciOn=50);
 
 

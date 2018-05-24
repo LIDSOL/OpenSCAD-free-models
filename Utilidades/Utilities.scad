@@ -105,6 +105,19 @@ module rondana (ancho=8,radioInterno=5,radioExterno=12,resoluciOn=100){
     }
     
 }//fin module rondana
+
+
+//RECORTADOR ESTRELLA INVERSO
+
+module RecortadorEstrellaInverso(lonX=90,lonY=90,orillas=5,redondeadorPoly=3){
+   
+difference(){
+    
+    square([lonX-(orillas/2),lonY-(orillas/2)],center=true);
+RecortadorEstrella(lonX=lonX, lonY=lonY,orillas=orillas,redondeadorPoly=redondeadorPoly);
+    }
+
+}
     
     //######RENDERIZADOS######
 

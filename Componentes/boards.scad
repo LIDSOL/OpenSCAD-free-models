@@ -1,6 +1,6 @@
 
 
-module ArduinoUNODraft(taladroEntradas=10){
+module ArduinoUNODraft(taladroEntradas=10,tol=0.2){
     
      /*
     medidas ARDUINO UNO
@@ -16,30 +16,30 @@ module ArduinoUNODraft(taladroEntradas=10){
 cube([68.6,53.3,espesorArduino]);
 
 //entrada DC
-translate([-taladroEntradas,3.3,espesorArduino])
-cube([taladroEntradas,8.9,10.9]);
+translate([-taladroEntradas,3.3-tol,espesorArduino])
+cube([taladroEntradas,8.9+(2*tol),10.9+(2*tol)]);
 
 //entrada USB
 translate([-taladroEntradas,31.7,espesorArduino])
-cube([taladroEntradas,12,10.9]);
+cube([taladroEntradas,12+(2*tol),10.9+(2*tol)]);
 
 //Led RX TX
     //se tomo la coordenada de los pines analogicos mas 30 en el eje "Y"
-translate([13.6+12.5,1+30,espesorArduino])
-cube([2,4,10.9+taladroEntradas]);
+translate([13.6+12.5-tol,1+30-tol,espesorArduino])
+cube([2+(2*tol),4+(2*tol),10.9+taladroEntradas]);
 
 //Led RX TX
     //se tomo la coordenada de los LED RX TX más 4mm (+4 por la medida de las ventanas) en el eje "Y"
-translate([13.6+12.5,1+30+8,espesorArduino])
-cube([2,2,10.9+taladroEntradas]);
+translate([13.6+12.5-tol,1+30+8-tol,espesorArduino])
+cube([2+(2*tol),2+(2*tol),10.9+taladroEntradas]);
 
 //entrada pines (analogicos)
-translate([13.6+12.5,1,espesorArduino])
-cube([33,2,10.9+taladroEntradas]);
+translate([13.6+12.5-tol,1-tol,espesorArduino])
+cube([33+(2*tol),2+(2*tol),10.9+taladroEntradas]);
 
 //entrada pines (digitales + PWM)
-translate([13.6+2.5,53.3-2-1,espesorArduino])
-cube([48,2,10.9+taladroEntradas]);
+translate([13.6+2.5-tol,53.3-2-1-tol,espesorArduino])
+cube([48+(2*tol),2+(2*tol),10.9+taladroEntradas]);
 
 //###Tornillos arduino#####
 translate([13.6,3,0])
@@ -68,7 +68,7 @@ cylinder($fn=100,d=3.2,h=taladroEntradas);
 
 }
 
-module ArduinoUNO(TaladroEntradas=10,modo=0){
+module ArduinoUNO(TaladroEntradas=10,tol=0.2,modo=0){
    
    /*
     medidas ARDUINO UNO
@@ -77,16 +77,16 @@ module ArduinoUNO(TaladroEntradas=10,modo=0){
     12.5
     */
     
-    echo("Medidas arduino",)
+    echo("ArduinoUNO x y z",68.6,53.3,12.5);
    
     if(modo==0){
 
-            ArduinoUNODraft(TaladroEntradas=TaladroEntradas);
+            ArduinoUNODraft(TaladroEntradas=TaladroEntradas,tol=tol);
     }
 
      if(modo==1){
             translate([-68.6/2,-53.3/2,-12.5/2])
-            ArduinoUNODraft(TaladroEntradas=TaladroEntradas);
+            ArduinoUNODraft(TaladroEntradas=TaladroEntradas,tol=tol);
     }
 
 }
@@ -159,7 +159,7 @@ modo = 0 esquinado
 modo = 1 el centro del objeto en el origen
 */
 
-ArduinoUNO(20,1);
+//ArduinoUNO(20,1);
 
 
 

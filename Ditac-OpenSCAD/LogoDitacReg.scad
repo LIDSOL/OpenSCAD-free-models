@@ -114,12 +114,7 @@ D();
     
 }
 
-}
-
-//color("red")
-//linear_extrude(height=3)
-//scale(1)
-logo();
+//R registrado
 
 translate([8.5,-7])
   text("R", size = 0.5, font = "Liberation Sans", halign = "center", valign = "center", $fn = 16);
@@ -129,3 +124,13 @@ difference(){
 circle(r=0.6,$fn=100);
 circle(r=0.5,$fn=100);    
 }
+
+}//fin modulo
+
+
+
+//color("red")
+//linear_extrude(height=3)
+scale(10)
+logo();
+

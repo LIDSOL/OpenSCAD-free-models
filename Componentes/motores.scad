@@ -18,7 +18,7 @@ module RedMotShaft(){
    
    //####MOTORES####
    
-   module redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1){
+   module redDobleEjeDraft(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1){
     
     
     translate([0,0,-alto/2])
@@ -64,7 +64,24 @@ rotate([90,0,0])
 cylinder(d=3,h=eje);
    
  }//fin union 
-}
+}//fin motor Draft
+
+  module redDobleEje(modo=1,centrado=0){
+      
+      echo("motorReductor x y z",64.2,18.8,22.5)
+      if(centrado==0){     
+      redDobleEjeDraft(modo=modo);
+      }
+      if(centrado==1){
+          translate([-11.2,0,0])
+       redDobleEjeDraft(modo=modo);
+          }
+          
+          if(centrado==2){
+          translate([-64.2/2,0,0])
+       redDobleEjeDraft(modo=modo);
+          }
+  }
 
 module motorPololu(){
 
@@ -158,13 +175,13 @@ cube([22.2,12,26],center=true);
 
 //####RENDERIZADOS#####
 $fn=100;
-//RedMotShaft();
+//RedMotShaft(centrado=0);
 
 //modo 0 --> Para recortar agujero para salida de motor
 //modo 1 --> Para visualizar shaft igual a motor
 //modo 2- -> Agujero Redondo (misma medida baseDitacCorr)
 
-//redDobleEje(largo=64.2,ancho=18.8,alto=22.5,eje=36.8,modo=1);
+//redDobleEje(modo=0,centrado=2);
 
 //motorPololu();
 

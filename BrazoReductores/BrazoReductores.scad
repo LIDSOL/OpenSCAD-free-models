@@ -22,22 +22,26 @@ module caseMayorRedDobleEje(modo=0){
         /*if(modo==0){  
     
         }*/
+        
+             desplazamientoZ=(22.5*2+espesor+tolerancia+5)/4;
         if(modo==1){
             //coples parte mOvil
-            translate([-64.2*2,0,(22.5*2+espesor+tolerancia+5)/4])
+            translate([-64.2*2,0,desplazamientoZ])
            rotate([0,90,0])
             rotate(90)
             linear_extrude(height=4*64.2)
         scale(escalamientoShaft)
         RedMotShaft();    
          
-            translate([64.2/2,0,0])
+    
+                   /* translate([64.2/2,0,desplazamientoZ])
+        
             rotate([0,90,0])
             for(i=[0:3]){
                 rotate(i*90)
                 translate([6,0,0])
          sphere(r=3);
-            }
+            }*/
             }
     }
     
@@ -49,6 +53,6 @@ CASEgamma(lonX=64.2+(2*(espesor+tolerancia+espaciaminetoX)),lonY=18.8+(2*(espeso
 */
 
 //#####RENDERIZADOS#####
-
+$fn=20;
 caseMayorRedDobleEje(modo=1);
     

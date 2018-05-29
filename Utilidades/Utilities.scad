@@ -118,6 +118,14 @@ RecortadorEstrella(lonX=lonX, lonY=lonY,orillas=orillas,redondeadorPoly=redondea
     }
 
 }
+//SECCION REDONDO PLANO
+
+module seccionRedondoPlano(radio=5,distancia=10){
+        hull() {
+           translate([distancia,0,0]) square([radio*2,radio*2],center=true);
+            circle(radio);
+          }
+      }
     
     //######RENDERIZADOS######
 

@@ -28,7 +28,9 @@ rotate([90,0,0])
      
      //para salida de motor
      if(modo==0){
-    cylinder(d=5.4+0.1,h=eje);
+    //cylinder(d=5.4+0.1,h=eje);
+    //se le aumento un mm para impresion en 3D
+         cylinder(d=5.4+1,h=eje);
      }
      //para visualizar motor
      else if(modo==1){
@@ -46,13 +48,14 @@ translate([0,-ancho/2,0])
 cube([largo,ancho,alto]);
     
      //ventana gomas
-     translate([31.8+11,-ancho,alto/2-14/2])
+     translate([31.8+11-4,-ancho,alto/2-14/2])
   cube([25,ancho*2,14]);
      
      //tope motor reductor
      translate([11.2+11,eje/2,alto/2])
 rotate([90,0,0])
-cylinder(d=4,h=eje);
+     //se le aumento un mm para impresion en 3D
+cylinder(d=4+1,h=eje);
      
     //tornillos
     translate([31.8,eje/2,alto/2+(17.5/2)])
@@ -181,7 +184,7 @@ $fn=100;
 //modo 1 --> Para visualizar shaft igual a motor
 //modo 2- -> Agujero Redondo (misma medida baseDitacCorr)
 
-//redDobleEje(modo=0,centrado=2);
+redDobleEje(modo=0,centrado=2);
 
 //motorPololu();
 

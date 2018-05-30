@@ -1,11 +1,13 @@
 # Satelite 
 
 ## Summary 
-This model is a cube-sat , intended for use with raspberry, the code is editable for any use and is located in the repository.
+
+
 
 ## Descripción
 
-Este modelo es un cube-sat , pensado para uso con raspberry, el código es editable para cualquier uso  y se encuentra en el repositorio.
+Columna proyecto con actuadores
+
  
 ## LIDSOL
 For more objects and models like this, follow us on:

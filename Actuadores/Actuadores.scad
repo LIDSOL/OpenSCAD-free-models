@@ -9,7 +9,7 @@ include<./../Utilidades/Utilities.scad>;
 
 radio=100;
 radioColumna=15;
-alturaColumna=240;
+alturaColumna=210;
 
 /*
 translate([0,60,220])
@@ -25,39 +25,112 @@ module actuadores(){
 
 
 //base ultrasonico
-translate([0,30,alturaColumna/2.2])
+translate([0,0,alturaColumna/2.2])
 difference(){
-cube([50,90,1],center=true);
-    translate([0,-25,3])
+cube([50,30,1],center=true);
+    translate([0,0,3])
     rotate([180,0,0])
     sensorHC04();
 }
+
+
 
 translate([0,70,alturaColumna/2.2])
 rotate(90)
 rotate([-90,0,180])
 linear_extrude(height=3)
-polygon([[0,0],[50,0],[0,50]]);
+estructuraTrapecio(largoEstructura=85,ladoLargo=35,ladoCorto=10);
+
+
+//###subestructuras sensor ultrasonico
+translate([0,15,alturaColumna/2.2])
+for(i=[0:1]){
+    translate([0,-(30-3)*i])
+     rotate([-90,0,180])
+     linear_extrude(height=3)
+     estructuraTrapecio(largoEstructura=25,ladoLargo=10,ladoCorto=5);
+}
+
+mirror([1,0,0]){
+translate([0,15,alturaColumna/2.2])
+for(i=[0:1]){
+    translate([0,-(30-3)*i])
+     rotate([-90,0,180])
+     linear_extrude(height=3)
+     estructuraTrapecio(largoEstructura=25,ladoLargo=10,ladoCorto=5);
+}
+
+}
+
+//fin subestructuras
+
+//utilidades**
+module estructuraTrapecio(largoEstructura=85,ladoLargo=35,ladoCorto=10){
+polygon([[0,0],[largoEstructura,0],[largoEstructura,ladoCorto],[0,ladoLargo]]);
+}
+
+
+
+
+
 
 translate([0,radio-radioColumna,0])
 union(){
 cylinder(r=radioColumna,h=alturaColumna);
     
+//priamide
+difference(){
+   linear_extrude(height=radioColumna*6,scale=1/6)
+   square([radio+8,radioColumna*2],center=true);
+    
+    despInterno=12;
+    translate([radio/2-despInterno,0,0])
+    cylinder(r=1.5,h=8);
+    
+     translate([-radio/2+despInterno,0,0])
+    cylinder(r=1.5,h=8);
+}
 
-linear_extrude(height=radioColumna*6,scale=1/6)
-square([radio*2,radioColumna*2],center=true);
+
+ //poste 1
+    translate([50,12,0])
+    cylinder(r=3,h=alturaColumna*(0.75));
+    
+  //poste 2
+    mirror([1,0,0]){
+      translate([50,12,0])
+      cylinder(r=3,h=alturaColumna*(0.75));  
+    }
 }
 
 
 //BASE
-rotate(90)
+
+
+!rotate(90)
 difference(){
     linear_extrude(height=3)
    seccionRedondoPlano(radio=radio,distancia=radio);
    translate([3*radio,0,0])
-    cube([radio*4,radio*4,6],center=true); 
+    cube([radio*4,radio*4,6],center=true);
+   //Recortador tornillos
+   
+ rotate(-90)
+  translate([0,radio-radioColumna-10,0])
+    union(){
+    //poste 1
+    translate([50,0,0])
+    cylinder(r=2,h=alturaColumna*(0.75),center=true);
+    
+  //poste 2
+    mirror([1,0,0]){
+      translate([50,0,0])
+      cylinder(r=2,h=alturaColumna*(0.75),center=true);  
+    }
+       } 
 
 }
+
 
 //actuadores
  //actuador 1

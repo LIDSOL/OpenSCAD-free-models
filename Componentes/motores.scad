@@ -184,7 +184,7 @@ $fn=100;
 //modo 1 --> Para visualizar shaft igual a motor
 //modo 2- -> Agujero Redondo (misma medida baseDitacCorr)
 
-redDobleEje(modo=0,centrado=2);
+//redDobleEje(modo=0,centrado=2);
 
 //motorPololu();
 

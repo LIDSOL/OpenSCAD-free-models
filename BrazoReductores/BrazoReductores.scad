@@ -8,10 +8,10 @@ include<./../Utilidades/Utilities.scad>;
 
 
 
-module caMaReDoE(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1,parte=0){
-    lonX=64.2+(2*(espesor+tolerancia+espaciaminetoX));
-    lonY=18.8+(2*(espesor+tolerancia));
-    lonZ=22.5*2+espesor+tolerancia;
+module caMaReDoE(medidaX=64.2,medidaY=22.5,medidaZ=18.8,espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1,parte=0){
+    lonX=medidaX+(2*(espesor+tolerancia+espaciaminetoX));
+    lonY=medidaY+(2*(espesor+tolerancia));
+    lonZ=(medidaZ*2)+(2*espesor+tolerancia);
         orillasRec=3;
     
     difference(){
@@ -96,8 +96,9 @@ module caseMayorRedDobleEje(modo=0){
          }       
               
    
-             desplazamientoZ=(22.5*2+espesor+tolerancia+5)/4-3;
+             desplazamientoZ=(18.8*2+espesor+tolerancia+5)/4-3;
              desplazamientoX=(64.2+(2*(espesor+tolerancia+espaciaminetoX)))/2;
+         
         if(modo==1){
             difference(){
                   caMaReDoE();
@@ -115,7 +116,7 @@ module caseMayorRedDobleEje(modo=0){
               rotate([0,90,0])
                  for(i=[0:3]){
                      rotate(i*90)
-                     translate([8,0,0])
+                     translate([6,0,0])
                      difference(){
                     sphere(r=3);
                          translate([0,0,-3])
@@ -129,7 +130,7 @@ module caseMayorRedDobleEje(modo=0){
               rotate([0,90,0])
                  for(i=[0:3]){
                      rotate(i*90)
-                     translate([8,0,0])
+                     translate([6,0,0])
                      difference(){
                     sphere(r=3);
                          translate([0,0,-3])
@@ -140,6 +141,11 @@ module caseMayorRedDobleEje(modo=0){
          }
 }
 
+//####PRUEBAS####
+
+
+//BRAZO
+/*
 escalamientoShaft=1.1;
 longitud=50;
 radio=8;
@@ -153,6 +159,8 @@ difference(){
 translate([longitud+2,0,-2])
 rotate([0,90,0])
 rondana(ancho=12,radioInterno=2.5,radioExterno=4,resoluciOn=20);
+*/
+
 
 //parte 0
 /*
@@ -164,7 +172,7 @@ $fn=20;
 
 //caMaReDoE(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1,parte=1);
 
-//caseMayorRedDobleEje(modo=1);
+caseMayorRedDobleEje(modo=1);
   
 //tapaMotorRedContra(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);
 

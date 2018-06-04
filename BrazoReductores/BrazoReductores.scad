@@ -17,7 +17,7 @@ module caMaReDoE(medidaX=64.2,medidaY=22.5,medidaZ=18.8,espesor=1.5,tolerancia=4
     difference(){
         CASEgamma(lonX=lonX,lonY=lonY,lonZ=lonZ,espesor=1.5,diametroPoste=5,tornillo=2.5,parte=parte);
         //motor reductor
-        translate([0,0,22.5/2])
+        translate([0,0,-(lonZ-22.25)/2])
         rotate([90,0,0])
     redDobleEje(modo=0,centrado=2);
         
@@ -36,7 +36,7 @@ module caMaReDoE(medidaX=64.2,medidaY=22.5,medidaZ=18.8,espesor=1.5,tolerancia=4
     module tapaMotorRed(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1){
         
         lonX=64.2+(2*(espesor+tolerancia+espaciaminetoX));
-        lonY=18.8+(2*(espesor+tolerancia));
+        lonY=22.5+(2*(espesor+tolerancia));
         lonZ=6;
         orillasRec=3;
         
@@ -56,7 +56,7 @@ module caMaReDoE(medidaX=64.2,medidaY=22.5,medidaZ=18.8,espesor=1.5,tolerancia=4
     module tapaMotorRedContra(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1){
         
         lonX=64.2+(2*(espesor+tolerancia+espaciaminetoX));
-        lonY=18.8+(2*(espesor+tolerancia));
+        lonY=22.5+(2*(espesor+tolerancia));
         lonZ=6;
         orillasRec=3;
         
@@ -170,10 +170,10 @@ CASEgamma(lonX=64.2+(2*(espesor+tolerancia+espaciaminetoX)),lonY=18.8+(2*(espeso
 //#####RENDERIZADOS#####
 $fn=20;
 
-//caMaReDoE(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1,parte=1);
+//caMaReDoE(medidaX=64.2,medidaY=22.5,medidaZ=(18.8+18),espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1,parte=1);
 
-caseMayorRedDobleEje(modo=1);
+//caseMayorRedDobleEje(modo=1);
   
 //tapaMotorRedContra(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);
 
-//tapaMotorRed(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);
+tapaMotorRed(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);

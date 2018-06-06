@@ -145,6 +145,7 @@ module caseMayorRedDobleEje(modo=0){
 
 
 //BRAZO
+
 /*
 escalamientoShaft=1.1;
 longitud=50;
@@ -161,6 +162,17 @@ rotate([0,90,0])
 rondana(ancho=12,radioInterno=2.5,radioExterno=4,resoluciOn=20);
 */
 
+//UNION BRAZOS
+
+distanciaBrazos=39-9;
+translate([0,0,1.5/2])
+cube([distanciaBrazos+(2*8),(2*8),1.5],center=true);
+translate([distanciaBrazos/2,0,1])
+cylinder(r=2,h=7+0.5);
+
+translate([-distanciaBrazos/2,0,1])
+cylinder(r=2,h=7+0.5);
+
 
 //parte 0
 /*
@@ -176,4 +188,4 @@ $fn=20;
   
 //tapaMotorRedContra(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);
 
-tapaMotorRed(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);
+//tapaMotorRed(espesor=1.5,tolerancia=4,espaciaminetoX=5,escalamientoShaft=1.1);
